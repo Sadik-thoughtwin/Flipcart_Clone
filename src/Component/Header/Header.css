@@ -1,0 +1,35 @@
+.InputText {
+  width: 80vh;
+  height: 30px;
+  padding-bottom: 5px;
+  padding-left: 30px !important;
+}
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2874f0;
+  height: 100px;
+}
+.header .p-button{
+ color:#2874f0;
+ background-color:white;
+ margin: 0px 5px 0 5px;
+}
+.loginField{
+  border:none;
+  outline:none;
+}
+.logo{
+  height:30px;
+  width:auto;
+  margin:20px;
+padding-top: 10px;
+}
+.Login_div{
+  display: flex;
+  justify-content: space-around;
+}
+.Image_div{
+  background-color: #2874f0;
+}

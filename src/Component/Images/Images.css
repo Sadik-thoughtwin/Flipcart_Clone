@@ -1,0 +1,12 @@
+.Navbar_images {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+ }
+  
+ .Navbar_images .NavbarImg .figure_Images{
+        width:20%;
+   } 
+   .Navbar_images .NavbarImg .figure_Images .Top_offers{
+     width: 100%;
+        }
