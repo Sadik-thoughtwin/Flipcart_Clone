@@ -1,0 +1,37 @@
+.Login_div {
+    display: flex;
+    justify-content: space-around;
+  }
+  .Image_login {
+    margin-top: 100px;
+  }
+  .inputField_div {
+    width: 250px;
+    border: none !important;
+    text-align: center;
+  }
+  .inputField_div .loginField {
+    border: none !important;
+    outline: none !important;
+  }
+  .Image_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #2874f0;
+    height: 25vh;
+    color: #ffffff;
+  }
+  .textItem {
+    text-align: center;
+  }
+  .loginField1 {
+    position: relative;
+  }  
+   /* .userLogin {
+    background-color: #fb641b;
+
+  } */
+
+
+  

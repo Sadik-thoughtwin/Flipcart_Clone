@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Carousel } from "primereact/carousel";
-import { Button } from "primereact/button";
 import { ProductService } from "./ProductService";
 import "./Carousel.css";
 
@@ -16,7 +15,7 @@ export const CarouselData = () => {
 
     productService
       .getProductsSmall()
-      .then((data) => setProducts(data.slice(0, 9)));
+      .then((data) => setProducts(data.slice(0, 3)));
   }, []);
 
   const productTemplate = (product) => {
@@ -26,19 +25,11 @@ export const CarouselData = () => {
           <div className="mb-3">
             <img
               src={`image/${product.image}`}
-              onError={(e) =>
-                (e.target.src =
-                  "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
-              }
               alt={product.name}
               className="product-image"
             />
           </div>
-          <div>
-            <h4 className="mb-1">{product.name}</h4>
-            <h6 className="mt-0 mb-3">${product.price}</h6>
-          </div>
-        </div>
+       </div>
       </div>
     );
   };
@@ -48,9 +39,8 @@ export const CarouselData = () => {
       <div className="card">
         <Carousel
           value={products}
-          numVisible={3}
+          numVisible={1}
           numScroll={1}
-          // responsiveOptions={responsiveOptions}
           className="custom-carousel"
           circular
           autoplayInterval={3000}

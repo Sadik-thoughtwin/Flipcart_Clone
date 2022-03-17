@@ -1,24 +1,26 @@
 .Navbar_images {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     border-bottom: 1px solid #ffffff;
     align-items: center;
+    padding: 10px 0;
     border-bottom: 2px solid #ffffff;
     -webkit-box-shadow: 10px 20px 23px -8px rgba(245, 237, 237, 0.75);
     -moz-box-shadow: 10px 20px 23px -8px rgba(231, 220, 220, 0.75);
     box-shadow: 10px 20px 23px -8px rgba(211, 204, 204, 0.75);
+    text-decoration: none;
+    
  }
-  
- .Navbar_images .NavbarImg .figure_Images{
-        width:40%;
-   } 
-   .Navbar_images .NavbarImg .figure_Images .Top_offers{
-     width: 100%;
-        }
-.Navbar_images .NavbarImg .figure_Images .Top_offers  figcaption{
-   /* font-size: 10px; */
-   width: 100%;
+ .child_div{
+     display: flex;
+     flex-direction:column;
+ }
+ .ItemsImg{
+     border-radius: 50%;
+     width: 75px;
 }
-.Navbar_images .NavbarImg .figure_Images .Top_offers  figcaption:hover{
-   color:blue;
-}
+ .spanitem{
+     font-size: 15px;
+     font-weight: 100;
+ }
+ 

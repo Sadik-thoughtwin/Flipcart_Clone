@@ -1,0 +1,28 @@
+/* moredropdown list */
+
+
+.more_list{
+    position: relative;
+    
+}
+.dropdownItem{
+   position: absolute;
+   margin-top: -12px;
+    display: none;
+    background-color: white;
+  }
+  .dropdownItem>li{
+    list-style: none;
+    margin-left:-120px;
+    padding: 10px 0;
+    width:200px;
+    background-color: #ffffff;
+  }
+  .more_list:hover .dropdownItem{
+  display: block;
+     
+  }
+  .seller{
+      text-decoration: none;
+      color:black;
+  }

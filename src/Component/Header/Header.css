@@ -1,74 +1,68 @@
 .InputText {
-  width:30%;
+  width: 30%;
   height: 30px;
   margin: 15px !important;
   padding-bottom: 5px;
-  }
- .header {
+}
+.header {
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: center;
   background-color: #2874f0;
   height: 60px;
 }
-.header .p-button{
- color:#2874f0;
- background-color:white;
- margin: 5px 221px 0 6px;
+.header .p-button {
+  color: #2874f0;
+  background-color: white;
+  margin: 5px 221px 0 6px;
+}
 
+.logo {
+  height: 30px;
+  width: auto;
+  margin: 20px;
+  padding-top: 10px;
 }
-.inputField_div{
-  width:250px;
-}
-.inputField_div .loginField{
-   border: none;
-}
-.logo{
-  height:30px;
-  width:auto;
-  margin:20px;
-padding-top: 10px;
-}
-.Login_div{
-  display: flex;
-  justify-content: space-around;
-}
-.Image_div{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #2874f0;
-  height: 25vh;
-  color:#ffffff;
-}
-.header .header_Button .userLogin{
-  background-color: #fb641b;
-  width:100%;
- }
-.textItem{
-  text-align: center;
-  
-}
-.dropdown_content{
-  top:100px;
-  padding-top: 245px;
+
+.dropdown_content {
+  position: absolute;
+  top: 55px;
   width: 200px;
-  display: block;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  z-index: 5;
   backface-visibility: none;
-
+  z-index: 999;
+  background-color: white;
+  display: none;
+}
+.dropdown_content .myprofile {
+  text-decoration: none;
+  color: black;
+}
+.dropdown_content .myprofile .myprofile_content {
+  margin-left: -65px;
+}
+.parent_LoginDiv:hover .dropdown_content {
+  display: block;
 }
 
 .header .p-button {
-position: relative;
-display:inline-block;
-/* top:50px; */
+  position: relative;
+  display: inline-block;
 }
 
-.header .parent_LoginDiv.p-button:hover .dropdown_content{
-  display:block;
+.header .parent_LoginDiv.p-button:hover .dropdown_content {
+  display: block;
 }
 .p-password input {
   width: 15rem;
+}
+
+.userLogin {
+  width: 100%;
+  text-align: center !important;
+  background-color: #fb641b !important;
+}
+
+.SignUp {
+  padding-left: 15px;
 }

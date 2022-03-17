@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { OPEN_MODEL } from '../Constant/constant';
 
 const userAction = (openBox) =>{
