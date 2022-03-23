@@ -1,9 +1,9 @@
 
 {
     "data": [
-        {"id": "1000","code": "f230fh0g3","name": "Delivery Item","description": "Product Description","image": "Flipkart.jpeg"},
+        {"id": "1000","code": "f230fh0g3","name": "Delivery Item","description": "Product Description","image": "dark.jpg"},
         {"id": "1001","code": "nvklal433","name": "Flipcart Item","description": "Product Description","image": "flipkart1.jpg"},
-        {"id": "1002","code": "zz21cz3c1","name": "Branded Item","description": "Product Description","image": "Flipkart.jpeg"}
+        {"id": "1002","code": "zz21cz3c1","name": "Branded Item","description": "Product Description","image": "universal.jpg"}
         
     ]
 }

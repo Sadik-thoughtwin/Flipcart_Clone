@@ -3,8 +3,8 @@ export class ProductService {
     const res = await fetch("data/products-small.json")
       .then((res) => 
        res.json())
-      .then((d) => d.data)
-      .catch((err) => {
+      .then((result) => result.data)
+      .catch((error) => {
       });
     return res;
   }

@@ -1,0 +1,23 @@
+.img {
+    display: flex;
+    flex-wrap: wrap;
+    transition: transform 0.2s;
+  }
+  .cardData {
+    transition: transform 0.3s;
+  }
+  .cardData:hover {
+    transform: scale(1.1);
+  }
+  .toast-demo button {
+    min-width: 10rem;
+    margin-right: .5rem;
+}
+
+@media screen and (max-width: 960px) {
+    .toast-demo button {
+        width: 100%;
+        margin-bottom: .5rem;
+    }
+}
+  

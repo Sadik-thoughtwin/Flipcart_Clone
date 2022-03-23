@@ -1,10 +1,14 @@
 import { combineReducers } from "redux";
+import productReducer  from "./productReducer";
+import { itemReducer } from "./itemReducer";
+import dataReducer from "./dataReducer";
 import userReducer from './userReducer';
-// import React from 'react'
-
 
  const rootReducers =combineReducers({
-        userReducer
+        userReducer,
+        productReducer,
+        itemReducer,
+        dataReducer
       })
 
 export default rootReducers;

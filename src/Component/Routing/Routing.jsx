@@ -14,7 +14,7 @@ function Routing() {
       <Route path="/notification" element={<Notification />} />
       <Route path="/seller" element={<Seller />} />
       <Route path="/customer" element={<Customer />} />
-      <Route path="/notification" element={<Notification />} />
+      {/* <Route path="/notification" element={<Notification />} /> */}
     </Routes>
   </Router>
     </>

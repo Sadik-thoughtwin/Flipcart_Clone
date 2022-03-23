@@ -3,13 +3,13 @@ import React from 'react'
 function Signup() {
   return (
     <div className="dropdown_content">
-              <p>
+              <div>
                 New Customer?
                <p  className="SignUp" > Signup</p>
-               </p>
+               </div>
               <div className="myprofile">
                 <h6 className="myprofile_content">
-                  <i className="pi pi-user" />
+                  <i className="pi pi-shopping-cart" />
                   My Profile
                 </h6>
               </div>

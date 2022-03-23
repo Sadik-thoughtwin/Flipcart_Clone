@@ -1,6 +1,6 @@
 import React from "react";
 
-function Imagee() {
+function SbiImages() {
   return (
     <div>
       <img src="image/sbi.png" alt="sbi card" />
@@ -9,4 +9,4 @@ function Imagee() {
   );
 }
 
-export default Imagee;
+export default SbiImages;
