@@ -6,9 +6,14 @@ export const itemReducer = (state=initialState,action) =>{
         case ADD_TO_CART : 
         const cardData =action.payload
         return [...state,{...cardData}]
+        
         case REMOVE_TO_CART  :
             console.log("state2",state)
-        return [state.filter(remove=>remove.id !== action.payload.id)]
+        return {
+            ...state,
+            data:[state.filter(remove=>remove.id !== action.id)
+            ]
+             }
 
         default: return  state
     }

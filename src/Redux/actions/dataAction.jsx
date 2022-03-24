@@ -1,14 +1,14 @@
 import { INCREMENT,DECREMENT } from "../Constant/constant"
-export const increment = (userData) =>{
-    
+export const addproduct = (id) =>{
+        
     return ({
-        type:INCREMENT,
-        payload:userData
+      type:INCREMENT,
+        id,
     })
 }
-// const decrement= (userData) =>{
-//     return ({
-//         type:DECREMENT,
-//         payload:userData
-//     })
-// }
+export const deleteproduct= (id) =>{
+    return ({
+        type:DECREMENT,
+        id,
+    })
+}

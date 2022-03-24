@@ -4,7 +4,10 @@ import React from "react";
 import Notification from "../More/Notification";
 import Seller from  '../More/Seller';
 import Customer from '../More/Customer';
-function Routing() {
+import Signup from '../Signup/Signup';
+import SignBox from "../Signup/SignBox";
+
+function GetRoutes() {
  
   return (
     <>
@@ -14,11 +17,11 @@ function Routing() {
       <Route path="/notification" element={<Notification />} />
       <Route path="/seller" element={<Seller />} />
       <Route path="/customer" element={<Customer />} />
-      {/* <Route path="/notification" element={<Notification />} /> */}
+      <Route path="/signup" element={<SignBox />} />
     </Routes>
   </Router>
     </>
 
   );
 }
-export default Routing;
+export default GetRoutes;

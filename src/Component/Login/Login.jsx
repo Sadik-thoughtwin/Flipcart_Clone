@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Password } from "primereact/password";
-import { button } from "primereact/button";
+import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import './Login.css';
 function Login() {
@@ -62,9 +62,9 @@ function Login() {
             Privacy Policy
           </div>
         </div>
-        <button className="userLogin" onClick={()=>InsetData()}>
+        <Button className="userLogin" onClick={()=>InsetData()}>
           Login
-        </button>
+        </Button>
         <h4>OR</h4>
         <h3>Request OTP</h3>
       </div>

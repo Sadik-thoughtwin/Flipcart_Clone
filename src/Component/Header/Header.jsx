@@ -11,7 +11,7 @@ import More from "../More/More";
 import { CarouselData } from "../Carousel/CarouselData";
 import SbiImages from "../ImageSection/SbiImages";
 import Login from "../Login/Login";
-import Signup from "../Signup/Signup";
+import WishList from "../Signup/WishList";
 import Product from "../../Pages/Products/Product";
 export const Header = () => {
   const selector = useSelector((state) => state.userReducer.openModel);
@@ -60,7 +60,7 @@ export const Header = () => {
               label="Login"
               onClick={() => dispatch(userAction(!position))}
             />
-            <Signup />
+            <WishList />
           </div>
 
           <Dialog
