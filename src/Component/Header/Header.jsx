@@ -19,24 +19,19 @@ export const Header = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     setPosition(selector);
-   
   }, [selector]);
 
   const dialogFuncMap = {
     position: setPosition,
   };
 
-  const onClick = (selector) => {
-    dialogFuncMap[`${position}`](false);
-
-    if (position) {
-      setPosition(position);
-    }
+  const onClick = (box) => {
+    dialogFuncMap[`${box}`](true);
   };
 
-  const onHide = (selector) => {
-    dispatch(userAction(!position));
-    dialogFuncMap[`${position}`](false);
+  const onHide = (box) => {
+    dispatch(userAction(position));
+    dialogFuncMap[`${box}`](false);
   };
 
   return (
@@ -58,7 +53,10 @@ export const Header = () => {
             <Button
               className="header_Button p-button"
               label="Login"
-              onClick={() => dispatch(userAction(!position))}
+              onClick={() => {
+                dispatch(userAction(!position));
+                onClick("position");
+              }}
             />
             <WishList />
           </div>
@@ -68,14 +66,12 @@ export const Header = () => {
             visible={position}
             style={{ width: "50vw", height: "500px" }}
             onHide={() => onHide("position")}
-            onClick={() => onClick("setPosition")}
           >
             <Login />
           </Dialog>
           <More />
-          <Cart/>
-         
-</header>
+          <Cart />
+        </header>
         <NavbarImages />
         <CarouselData />
         <SbiImages />

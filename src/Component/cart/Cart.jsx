@@ -1,30 +1,26 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
 import { Badge } from "primereact/badge";
 import "./cart.css";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "../../Redux/actions/dataAction";
-const Cart = () => {
-  const colculation = useSelector((calc) => calc.dataReducer);
-  console.log("calc",colculation)
+import { decrement, increment } from "../../Redux/actions/itemsAction";
+  const Cart = () => {
   const [visibleRight, setVisibleRight] = useState(false);
-  const [value, setValue] = useState(1);
   const allItem = useSelector((state) => state.itemReducer);
   const dispatch = useDispatch();
-  useEffect(() => {
 
-  }, []);
+  const incrementData = (id) => {
+    dispatch(increment(id));
+  };
 
-  const incrementData= ()=>{
-       
-    //  dispatch(increment(setValue(value+1)))
-    
-  }
-  const decrementData= ()=>{
-    
-    // dispatch(decrement(setValue(value-1)))
- }
+  const decrementData = (id) => {
+    dispatch(decrement(id));
+  };
+  const total = allItem.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+
   return (
     <div>
       <div className="card">
@@ -34,11 +30,26 @@ const Cart = () => {
           position="right"
           onHide={() => setVisibleRight(false)}
         >
-          <h3 >Cart</h3>
-          {allItem == "" ? <div style={{margin:"40px"}}><h3>Missing Cart Items ?</h3><img src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" width="100" height="100"/><p>Login to see the items you added previously</p></div> : <h2>Item List</h2>}
+          <h3>Cart</h3>
+          {allItem == "" ? (
+            <div style={{ margin: "40px" }}>
+              <h3>Missing Cart Items ?</h3>
+              <img
+                src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+                width="100"
+                height="100"
+                alt="items_img"
+              />
+              <p>Login to see the items you added previously</p>
+            </div>
+          ) : (
+            <h2>Item List</h2>
+          )}
+
           {allItem?.map((single, index) => {
             return (
               <div key={index} className="card_data">
+                <hr />
                 <img
                   src={single.imgUrl}
                   alt="imagee"
@@ -46,18 +57,17 @@ const Cart = () => {
                   width="100"
                 />
                 <h3>{single.category.type}</h3>
-                <h3>{single.price}</h3>
-                <h3>{single.quantity}</h3>
+                <h3>{single.price}.00</h3>
                 <h3>{single.title}</h3>
-                <button onClick={decrementData}> - </button>
+                <button onClick={() => decrementData(single.id)}> - </button>
                 <span>{single.quantity}</span>
-                <button onClick={incrementData}> + </button>
-                <hr/>
+                <button onClick={() => incrementData(single.id)}> + </button>
+
+                <hr />
               </div>
             );
-          })
-        
-          }
+          })}
+          {allItem.length > 0 && <h3>Total:{total}.00 </h3>}
         </Sidebar>
 
         <Button

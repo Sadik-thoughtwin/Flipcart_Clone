@@ -6,6 +6,7 @@ import Seller from  '../More/Seller';
 import Customer from '../More/Customer';
 import Signup from '../Signup/Signup';
 import SignBox from "../Signup/SignBox";
+import Details from '../Details/Details';
 
 function GetRoutes() {
  
@@ -18,6 +19,7 @@ function GetRoutes() {
       <Route path="/seller" element={<Seller />} />
       <Route path="/customer" element={<Customer />} />
       <Route path="/signup" element={<SignBox />} />
+      <Route path ="/details" element={<Details />} />
     </Routes>
   </Router>
     </>

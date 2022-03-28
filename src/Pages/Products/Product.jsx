@@ -1,16 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Card } from "primereact/card";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "primereact/button";
-import { addToCart, removeToCart } from "../../Redux/actions/itemsAction";
+import { addToCart } from "../../Redux/actions/itemsAction";
 import "./Product.css";
 import { Toast } from "primereact/toast";
-import {
-   fetchProducts,
-} from "../../Redux/actions/GetProduct/productAction";
+import { fetchProducts } from "../../Redux/actions/GetProduct/productAction";
 function Product() {
   const allProduct = useSelector((state) => state.productReducer.products);
-  const allItem = useSelector((state) => state.itemReducer);
   const dispatch = useDispatch();
   const toast = useRef(null);
 
@@ -42,7 +39,7 @@ function Product() {
           <p>{items.category.type}</p>
           <p>${items.price}</p>
           <Toast ref={toast} />
-          <Button 
+          <Button
             onClick={() => {
               dispatch(addToCart(items));
               showSuccess();
@@ -50,9 +47,6 @@ function Product() {
           >
             Add to card
           </Button>
-          {/* <Button   onClick={() => dispatch(removeToCart(items))}>
-            Remove to card
-          </Button> */}
           <div className="card toast-demo"></div>
         </Card>
       ))}

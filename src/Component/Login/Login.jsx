@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import './Login.css';
+import "./Login.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const InsetData = () => {
-
-    if(!email==="" && !password===""){
-        console.log("email in not valid",email)
-        console.log("password in not valid",password)
-}
-    const item = {email,password};
-    console.log("item",item)
+    if (email === "") {
+      console.log("email in not valid", email);
+    } else if (password === "") {
+      console.log("password in not valid", password);
+    }
+    const item = { email, password };
+    console.log("item", item);
   };
 
   return (
@@ -58,11 +58,9 @@ function Login() {
           By continuing, you agree to Flipkart's
           <div>Terms of Use</div>
           and
-          <div>
-            Privacy Policy
-          </div>
+          <div>Privacy Policy</div>
         </div>
-        <Button className="userLogin" onClick={()=>InsetData()}>
+        <Button className="userLogin" onClick={() => InsetData()}>
           Login
         </Button>
         <h4>OR</h4>

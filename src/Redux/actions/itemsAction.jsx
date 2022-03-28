@@ -1,15 +1,24 @@
-import { ADD_TO_CART, REMOVE_TO_CART } from "../Constant/constant";
+import { ADD_TO_CART, INCREMENT, DECREMENT } from "../Constant/constant";
 
-export const addToCart = (cartItem) => {
+export const addToCart = (cardItem) => {
+  console.log("itemsData", cardItem);
   return {
     type: ADD_TO_CART,
-    payload: cartItem,
+    payload: cardItem,
   };
 };
 
-export const removeToCart = (id) => {
+export const increment = (id) => {
   return {
-    type: REMOVE_TO_CART,
-    id
+    type: INCREMENT,
+    payload: id,
   };
 };
+
+export const decrement = (id) => {
+  return {
+    type: DECREMENT,
+    payload: id,
+  };
+};
+
