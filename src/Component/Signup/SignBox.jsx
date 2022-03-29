@@ -32,7 +32,7 @@ function SignBox() {
           />
           <br />
           <br />
-           <Button className="userLogin">Continue</Button>
+          <Button className="userLogin">Continue</Button>
         </div>
       </Dialog>
     </div>

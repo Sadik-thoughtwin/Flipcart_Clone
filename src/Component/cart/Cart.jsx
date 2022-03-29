@@ -50,19 +50,16 @@ import { decrement, increment } from "../../Redux/actions/itemsAction";
             return (
               <div key={index} className="card_data">
                 <hr />
-                <img
+                 <img
                   src={single.imgUrl}
                   alt="imagee"
-                  height="100"
-                  width="100"
-                />
+                 />
                 <h3>{single.category.type}</h3>
-                <h3>{single.price}.00</h3>
+                <h3>Rs:{single.price}.00</h3>
                 <h3>{single.title}</h3>
                 <button onClick={() => decrementData(single.id)}> - </button>
                 <span>{single.quantity}</span>
                 <button onClick={() => incrementData(single.id)}> + </button>
-
                 <hr />
               </div>
             );

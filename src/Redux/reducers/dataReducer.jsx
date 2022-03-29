@@ -1,27 +1,15 @@
-// import React from "react";
-// import { INCREMENT, DECREMENT } from "../Constant/constant";
+import { DATADETAILS } from "../Constant/constant";
+const isState = {
+  productsDetails: [],
+};
+export const dataReducer = (state = isState, action) => {
+  switch (action.type) {
+    case DATADETAILS:
+      const id = action.payload;
+      return id;
 
-// const initialState = {
-//   count: 1,
-// };
 
-// const dataReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case INCREMENT:
-//       console.log("INCREMENT",action.payload)
-      
-//       return [
-        
-//         {
-//           state: state + action.id,
-//         },
-//       ];
-
-//     case DECREMENT:
-//       return { state: state-action.id };
-
-//     default:
-//       return state;
-//   }
-// };
-// export default dataReducer;
+    default:
+      return state;
+  }
+};

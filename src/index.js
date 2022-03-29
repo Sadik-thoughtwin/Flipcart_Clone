@@ -4,14 +4,16 @@ import './index.css';
 import GetRoutes from './Component/Routing/GetRoutes';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
-import {store} from './Redux/Store/store';
+import {persistor,store} from './Redux/Store/store';
+import { PersistGate } from 'redux-persist/integration/react'
 
 ReactDOM.render(
 
     <Provider store ={store}>
-      <GetRoutes />
-   
-</Provider>
+     < PersistGate loading={null} persistor={persistor}>
+          <GetRoutes />
+      </PersistGate>
+  </Provider>
   ,
   document.getElementById('root')
 );

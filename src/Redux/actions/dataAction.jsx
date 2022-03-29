@@ -1,15 +1,9 @@
-// import { INCREMENT,DECREMENT } from "../Constant/constant"
-// export const addproduct = (id) =>{
+import { DATADETAILS } from "../Constant/constant"
+
+export const oneItem = (id) =>{
     
-//     return ({
-        
-//       type:INCREMENT,
-//         id,
-//     })
-// }
-// export const deleteproduct= (id) =>{
-//     return ({
-//         type:DECREMENT,
-//         id,
-//     })
-// }
+    return ({
+        type:DATADETAILS,
+        payload:id
+    })
+}

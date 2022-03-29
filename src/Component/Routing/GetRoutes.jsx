@@ -4,7 +4,6 @@ import React from "react";
 import Notification from "../More/Notification";
 import Seller from  '../More/Seller';
 import Customer from '../More/Customer';
-import Signup from '../Signup/Signup';
 import SignBox from "../Signup/SignBox";
 import Details from '../Details/Details';
 
@@ -14,12 +13,12 @@ function GetRoutes() {
     <>
      <Router>
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/notification" element={<Notification />} />
-      <Route path="/seller" element={<Seller />} />
-      <Route path="/customer" element={<Customer />} />
-      <Route path="/signup" element={<SignBox />} />
-      <Route path ="/details" element={<Details />} />
+      <Route exact path="/" element={<App />} />
+      <Route exact path="/notification" element={<Notification />} />
+      <Route exact path="/seller" element={<Seller />} />
+      <Route exact path="/customer" element={<Customer />} />
+      <Route exact path="/signup" element={<SignBox />} />
+      <Route exact path ="/details" element={<Details />} />
     </Routes>
   </Router>
     </>
