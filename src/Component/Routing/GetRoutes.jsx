@@ -4,7 +4,7 @@ import React from "react";
 import Notification from "../More/Notification";
 import Seller from  '../More/Seller';
 import Customer from '../More/Customer';
-import SignBox from "../Signup/SignBox";
+import Signup from "../Signup/Signup";
 import Details from '../Details/Details';
 
 function GetRoutes() {
@@ -17,7 +17,7 @@ function GetRoutes() {
       <Route exact path="/notification" element={<Notification />} />
       <Route exact path="/seller" element={<Seller />} />
       <Route exact path="/customer" element={<Customer />} />
-      <Route exact path="/signup" element={<SignBox />} />
+      <Route exact path="/signup" element={<Signup />} />
       <Route exact path ="/details" element={<Details />} />
     </Routes>
   </Router>

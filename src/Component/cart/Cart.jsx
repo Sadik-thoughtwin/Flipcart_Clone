@@ -5,7 +5,7 @@ import { Badge } from "primereact/badge";
 import "./cart.css";
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../../Redux/actions/itemsAction";
-  const Cart = () => {
+const Cart = () => {
   const [visibleRight, setVisibleRight] = useState(false);
   const allItem = useSelector((state) => state.itemReducer);
   const dispatch = useDispatch();
@@ -50,10 +50,7 @@ import { decrement, increment } from "../../Redux/actions/itemsAction";
             return (
               <div key={index} className="card_data">
                 <hr />
-                 <img
-                  src={single.imgUrl}
-                  alt="imagee"
-                 />
+                <img src={single.imgUrl} alt="imagee" />
                 <h3>{single.category.type}</h3>
                 <h3>Rs:{single.price}.00</h3>
                 <h3>{single.title}</h3>

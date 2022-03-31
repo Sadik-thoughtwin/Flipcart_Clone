@@ -14,15 +14,17 @@ export const Header = () => {
   const selector = useSelector((state) => state.userReducer.openModel);
   const [position, setPosition] = useState(false);
   const dispatch = useDispatch();
+  
   useEffect(() => {
     setPosition(position);
-  }, [selector]);
+  }, [position]);
 
   const dialogFuncMap = {
     position: setPosition,
   };
 
   const onClick = (box) => {
+    dispatch(userAction(!position));
     dialogFuncMap[`${box}`](true);
   };
 
@@ -45,12 +47,11 @@ export const Header = () => {
           placeholder="Search for products,brands and more"
         />
 
-        <div className="parent_LoginDiv">
+        <div className="parent_LoginDiv button_margin">
           <Button
             className="header_Button p-button"
             label="Login"
             onClick={() => {
-              dispatch(userAction(!position));
               onClick("position");
             }}
           />
@@ -62,11 +63,16 @@ export const Header = () => {
           visible={position}
           style={{ width: "50vw", height: "500px" }}
           onHide={() => onHide("position")}
+          dismissableMask={true}
         >
           <Login />
         </Dialog>
-        <More />
+       <div className="button_margin">
+       <More />
+       </div>
+        <div className="button_margin">
         <Cart />
+        </div>
       </header>
     </div>
   );
