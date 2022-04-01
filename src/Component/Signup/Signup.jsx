@@ -2,7 +2,7 @@ import "primeicons/primeicons.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
@@ -10,25 +10,29 @@ import { Password } from "primereact/password";
 import { Checkbox } from "primereact/checkbox";
 import { Dialog } from "primereact/dialog";
 import { classNames } from "primereact/utils";
-import {axios} from 'axios';
+import axios from "axios";
 
- const Signup = () => {
-  
+const Signup = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
- 
-  // axios.get(`https://jsonplaceholder.typicode.com/users`)
-  // .then(res => {
-  //   const persons = res.data;
-  //   this.setState({ persons });
-  // })
- 
+  const [showData,setShowData] = useState("")
+  const getData = async (data) => {
+    await axios
+      .post(`https://terrible-chipmunk-41.loca.lt/create`, data)
+      .then((res) => {
+        console.log("res", res);
+        setShowMessage(true);
+        setShowData(res.data.message)
+        formik.resetForm();
+      });
+  };
+
   const formik = useFormik({
     initialValues: {
       name: "",
       email: "",
       password: "",
-      accept: false
+      accept: false,
     },
     validate: (data) => {
       let errors = {};
@@ -57,10 +61,8 @@ import {axios} from 'axios';
     },
     onSubmit: (data) => {
       setFormData(data);
-      setShowMessage(true);
-
-      formik.resetForm();
-    }
+      getData(data);
+    },
   });
 
   const isFormFieldValid = (name) =>
@@ -83,7 +85,7 @@ import {axios} from 'axios';
       />
     </div>
   );
-  
+
   return (
     <div className="form-demo">
       <Dialog
@@ -100,11 +102,10 @@ import {axios} from 'axios';
             className="pi pi-check-circle"
             style={{ fontSize: "5rem", color: "var(--green-500)" }}
           ></i>
-          <h5>Registration Successful!</h5>
+          <h5>{showData}!</h5>
           <p style={{ lineHeight: 1.5, textIndent: "1rem" }}>
-            Your account is registered under name <b>{formData.name}</b> ; it'll
-            be valid next 30 days without activation. Please check
-            <b>{formData.email}</b> for activation instructions.
+            Your account is registered under name <b>{formData.name}</b> 
+            <br /> Your Email is:<b>{formData.email}</b> 
           </p>
         </div>
       </Dialog>
@@ -122,13 +123,13 @@ import {axios} from 'axios';
                   onChange={formik.handleChange}
                   autoFocus
                   className={classNames({
-                    "p-invalid": isFormFieldValid("name")
+                    "p-invalid": isFormFieldValid("name"),
                   })}
                 />
                 <label
                   htmlFor="name"
                   className={classNames({
-                    "p-error": isFormFieldValid("name")
+                    "p-error": isFormFieldValid("name"),
                   })}
                 >
                   Name*
@@ -145,13 +146,13 @@ import {axios} from 'axios';
                   value={formik.values.email}
                   onChange={formik.handleChange}
                   className={classNames({
-                    "p-invalid": isFormFieldValid("email")
+                    "p-invalid": isFormFieldValid("email"),
                   })}
                 />
                 <label
                   htmlFor="email"
                   className={classNames({
-                    "p-error": isFormFieldValid("email")
+                    "p-error": isFormFieldValid("email"),
                   })}
                 >
                   Email*
@@ -171,7 +172,7 @@ import {axios} from 'axios';
                 <label
                   htmlFor="password"
                   className={classNames({
-                    "p-error": isFormFieldValid("password")
+                    "p-error": isFormFieldValid("password"),
                   })}
                 >
                   Password*
@@ -187,13 +188,13 @@ import {axios} from 'axios';
                 checked={formik.values.accept}
                 onChange={formik.handleChange}
                 className={classNames({
-                  "p-invalid": isFormFieldValid("accept")
+                  "p-invalid": isFormFieldValid("accept"),
                 })}
               />
               <label
                 htmlFor="accept"
                 className={classNames({
-                  "p-error": isFormFieldValid("accept")
+                  "p-error": isFormFieldValid("accept"),
                 })}
               >
                 I agree to the terms and conditions*
@@ -208,64 +209,4 @@ import {axios} from 'axios';
   );
 };
 
-// const rootElement = document.getElementById("root");
-// ReactDOM.render(<FormikFormDemo />, rootElement);
-
 export default Signup;
-
-
-
-// import React, { useState } from "react";
-// import { Dialog } from "primereact/dialog";
-// import { Button } from "primereact/button";
-// import { InputText } from "primereact/inputtext";
-// import { Password } from "primereact/password";
-// import {Header} from '../Header/Header';
-// import "./Signup.css";
-// function Signup() {
-//   const [displayBasic, setDisplayBasic] = useState(true);
-//   const [position, setPosition] = useState("center");
-
-//   const dialogFuncMap = {
-//     displayBasic: setDisplayBasic,
-//   };
-
-//   const onHide = (name) => {
-//     dialogFuncMap[`${name}`](false);
-//   };
-
-//   return (
-//    <>
-//       <Header />
-//     <div className="Box_Div">
-//       <Dialog
-//         header="Header"
-//         visible={displayBasic}
-//         className="dialogBox"
-//         style={{ width: "50vw" }}
-//         onHide={() => onHide("displayBasic")}
-//       >
-//         <div className="inputField_div">
-//         <InputText
-         
-//          placeholder="Enter username"
-//        /><br /><br />
-//         <InputText
-      
-//       placeholder="Enter email"
-//     /><br /><br />
-//        <InputText
-      
-//       placeholder="Enter Password"
-//     />
-//           <br />
-//           <br />
-//           <Button className="userLogin">SignUp</Button>
-//         </div>
-//       </Dialog>
-//     </div>
-//    </>
-//   );
-// }
-
-// export default Signup;

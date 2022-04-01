@@ -22,24 +22,41 @@
 .textItem {
   text-align: center;
 }
-div.inputField_div input.loginField {
+div.inputField_div .loginField {
   position: relative;
   border: none;
   border-bottom: 1px solid black;
+  border-radius: 0 !important;
 }
 
 .p-inputtext:enabled:focus {
   outline: 0 none;
-  outline-offset: 0;
+  /* outline-offset: 0; */
   box-shadow: none !important;
-  border-color: white !important;
   
+}
+.p-password input {
+  width: 15rem;
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 0;
+}
+.loginField1:enabled:focus {
+  outline: 0 none;
 }
 .password_input {
   display: flex;
   justify-content: flex-start;
-  
 }
-div .font_set{
+div .font_set {
   font-size: 12px;
+}
+.p-button:enabled:focus{
+background-color: none !important;
+} 
+.userLogin {
+  width: 100%;
+  border: none;
+  text-align: center !important;
+  background-color: #fb641b !important;
 }

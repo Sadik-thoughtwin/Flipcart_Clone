@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
+import axios from "axios";
+
 import "./Login.css";
+
 function Login() {
   const [formValues, setFormValues] = useState({email: "",password: ""});
   const [formError, setFormError] = useState({});
@@ -14,14 +17,23 @@ function Login() {
     
   };
 
+  const LoginData= async (formValues)=>{
+    await axios.post('https://terrible-chipmunk-41.loca.lt/login',formValues).then((result)=>{
+      console.log("result",result)
+    }).catch((error)=>{
+      console.log("Error",error)
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormError(validate(formValues));
+    LoginData(formValues)
+    console.log("formValues",formValues)
     setIsSubmit(true);
   };
 
   useEffect(()=>{
-    console.log(formError)
     if(Object.keys(formError).length === 0 && isSubmit){
       
     }
@@ -69,7 +81,7 @@ function Login() {
           alt="loginpageImage"
         />
       </div>
-      {Object.keys(formError).length === 0 && isSubmit? (<span style={{color:"green"}}>Logined Succussfully</span>): ""}
+      {Object.keys(formError).length === 0 && isSubmit? (<div style={{color:"green",marginRight:"20px"}}>Logined Succussfully</div>): ""}
       <form onSubmit={handleSubmit}>
         <div className="inputField_div">
           <InputText
@@ -91,7 +103,6 @@ function Login() {
                 value={formValues.password}
                 placeholder="Enter Password"
                 onChange={handleInput}
-                // mediumRegex
                 feedback={false}
               />
                <p style={{color:"red"}}>{formError.password}</p>

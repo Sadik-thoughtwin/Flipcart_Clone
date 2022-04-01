@@ -1,3 +1,22 @@
+
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import rootReducers from "../reducers/rootReducer";
+const persistConfig = {
+  key: 'authType',
+  storage: storage,
+
+};
+const pReducer = persistReducer(persistConfig, rootReducers);
+const middleware = applyMiddleware(thunk);
+const store = createStore(pReducer, middleware);
+const persistor = persistStore(store);
+export { persistor, store };
+
+
+
 // import { createStore,applyMiddleware,compose } from "redux";
 // import rootReducers from "../reducers/rootReducer";
 // import thunk from 'redux-thunk';
@@ -31,20 +50,3 @@
 //   return {store,persistor}
 // }
 
-import React from 'react';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import rootReducers from "../reducers/rootReducer";
-const persistConfig = {
-  key: 'authType',
-  storage: storage,
-
-};
-const pReducer = persistReducer(persistConfig, rootReducers);
-const middleware = applyMiddleware(thunk, logger);
-const store = createStore(pReducer, middleware);
-const persistor = persistStore(store);
-export { persistor, store };

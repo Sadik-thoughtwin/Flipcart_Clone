@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 import { Badge } from "primereact/badge";
 import "./cart.css";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "../../Redux/actions/itemsAction";
+import { decrement, increment,removeToCart } from "../../Redux/actions/itemsAction";
 const Cart = () => {
   const [visibleRight, setVisibleRight] = useState(false);
   const allItem = useSelector((state) => state.itemReducer);
@@ -16,6 +16,9 @@ const Cart = () => {
 
   const decrementData = (id) => {
     dispatch(decrement(id));
+  };
+  const removeData = (id) => {
+    dispatch(removeToCart(id));
   };
   const total = allItem.reduce((total, item) => {
     return total + item.price * item.quantity;
@@ -30,7 +33,7 @@ const Cart = () => {
           position="right"
           onHide={() => setVisibleRight(false)}
         >
-          <h3>Cart</h3>
+          <h3>Cart List {allItem.length}</h3>
           {allItem == "" ? (
             <div style={{ margin: "40px" }}>
               <h3>Missing Cart Items ?</h3>
@@ -43,7 +46,7 @@ const Cart = () => {
               <p>Login to see the items you added previously</p>
             </div>
           ) : (
-            <h2>Item List</h2>
+            ""
           )}
 
           {allItem?.map((single, index) => {
@@ -54,9 +57,10 @@ const Cart = () => {
                 <h3>{single.category.type}</h3>
                 <h3>Rs:{single.price}.00</h3>
                 <h3>{single.title}</h3>
-                <button onClick={() => decrementData(single.id)}> - </button>
+                <button className="DecrementButton" onClick={() => decrementData(single.id)}> - </button>
                 <span>{single.quantity}</span>
-                <button onClick={() => incrementData(single.id)}> + </button>
+                <button className="IncrementButton" onClick={() => incrementData(single.id)}> + </button>
+                <button className="removeData" onClick={() => removeData(single.id)}> Remove </button>
                 <hr />
               </div>
             );
@@ -71,7 +75,7 @@ const Cart = () => {
         >
           <i
             className="pi pi-shopping-cart mr-2 p-text-secondary p-overlay-badge icon"
-            style={{ fontSize: "1.2rem" }}
+            style={{ fontSize: "1.2rem"}}
           >
             <Badge value={allItem.length} severity="danger"></Badge>
           </i>

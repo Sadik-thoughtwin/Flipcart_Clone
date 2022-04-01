@@ -1,11 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './Signup.css';
 function WishList() {
   return (
     <div className="dropdown_content">
               <div className='new_cutomer'>
-                <h5>New Customer?</h5>
-               <h5><Link to ="/signup" style={{textDecoration:"none"}}>SignUp</Link></h5>
+                <span>New Customer?</span>
+               <span><Link to ="/signup" style={{textDecoration:"none",marginLeft:"10px"}}>SignUp</Link></span>
                </div>
               <div className="myprofile">
                 <h5 className="myprofile_content">

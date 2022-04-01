@@ -2,4 +2,25 @@
     color:black;
     text-align: center;
 }
-
+.IncrementButton{
+    margin-left:5px
+}
+.DecrementButton{
+    margin-right:5px
+}
+.DecrementButton:hover{
+    background-color:#2874f0;
+    color:white;
+}
+.IncrementButton:hover{
+    background-color:#2874f0;
+    color:white;
+}
+.removeData{
+    margin-left: 40px;
+    background-color:#2874f0;
+    color:white;
+}
+.removeData:hover{
+    background-color:red;
+    }

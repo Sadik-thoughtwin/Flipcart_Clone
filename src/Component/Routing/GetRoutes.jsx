@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "../../App";
 import React from "react";
 import Notification from "../More/Notification";
@@ -8,19 +8,30 @@ import Signup from "../Signup/Signup";
 import Details from '../Details/Details';
 
 function GetRoutes() {
+
+ const allRoutes = [
+        { path:"/" , Component:App},
+        { path:"/notification",Component:Notification},
+        { path:"/seller" ,Component:Seller},
+        { path:"/customer",Component:Signup},
+        { path:"/details" , Component:Details}
+ ] 
  
   return (
     <>
-     <Router>
+     <BrowserRouter>
     <Routes>
-      <Route exact path="/" element={<App />} />
-      <Route exact path="/notification" element={<Notification />} />
+      {allRoutes?.map((item)=>{
+          return <Route path={item.path} element={<item.Component />} />
+      })}
+      
+      {/* <Route exact path="/notification" element={<Notification />} />
       <Route exact path="/seller" element={<Seller />} />
       <Route exact path="/customer" element={<Customer />} />
       <Route exact path="/signup" element={<Signup />} />
-      <Route exact path ="/details" element={<Details />} />
+      <Route exact path ="/details" element={<Details />} /> */}
     </Routes>
-  </Router>
+  </BrowserRouter>
     </>
 
   );

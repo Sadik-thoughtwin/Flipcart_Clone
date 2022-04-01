@@ -1,7 +1,18 @@
 .dropdown_content{
 
-    margin-left:12px;
+    margin-left:-10px;
 }
+.dropdown_content:before{
+    content: "";
+    margin-top: -8px;
+    margin-left: -20px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    transform: rotate(44deg);
+   }
+   
 .dialog-demo .p-button {
     margin: 0 .5rem 0 0;
     min-width: 10rem;
@@ -22,6 +33,7 @@
 }
 
 .new_cutomer{
+    margin-top:20px;
     display: flex;
     justify-content: space-around;
 }

@@ -1,4 +1,4 @@
-import { ADD_TO_CART, INCREMENT, DECREMENT } from "../Constant/constant";
+import { ADD_TO_CART,REMOVE_TO_CART, INCREMENT, DECREMENT } from "../Constant/constant";
 const initialState = [
   
 ];
@@ -8,6 +8,11 @@ export const itemReducer = (state = initialState, action) => {
       const cardData = action.payload;
       return [...state, { ...cardData }];
 
+      case REMOVE_TO_CART:
+        const id = action.payload;
+        const newList=  state.filter((element)=> element.id !== id)
+        return [...newList]
+  
     case INCREMENT:
       state.map((addQuatity) => {
         if (addQuatity.id === action.payload) {
