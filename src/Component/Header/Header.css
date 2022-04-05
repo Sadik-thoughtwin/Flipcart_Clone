@@ -4,6 +4,7 @@
   margin: 15px !important;
   padding-bottom: 5px;
 }
+
 .header {
   display: flex;
   justify-content: space-around;
@@ -11,10 +12,13 @@
   background-color: #2874f0;
   height: 60px;
 }
+.header .InputText {
+  border-radius: none !important;
+}
 .header .p-button {
   color: #2874f0;
   background-color: white;
-  margin: 0 0 0 40px;
+  margin-right: 40px;
 }
 
 .logo {
@@ -55,7 +59,6 @@
 .header .parent_LoginDiv.p-button:hover .dropdown_content {
   display: block;
 }
-
 
 .SignUp {
   padding-left: 15px;

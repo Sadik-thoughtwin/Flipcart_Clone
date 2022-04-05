@@ -1,12 +1,14 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Button } from "primereact/button";
+import Signup from './Signup';
 import './Signup.css';
 function WishList() {
   return (
     <div className="dropdown_content">
               <div className='new_cutomer'>
-                <span>New Customer?</span>
-               <span><Link to ="/signup" style={{textDecoration:"none",marginLeft:"10px"}}>SignUp</Link></span>
+                <span className="new-customer">New Customer?</span>
+               <span style={{marginLeft:"5px"}}> <Signup /></span>
+
                </div>
               <div className="myprofile">
                 <h5 className="myprofile_content">
@@ -38,7 +40,9 @@ function WishList() {
                   <i className="pi pi-credit-card" />
                   <span style={{marginLeft:"10px"}}>Rewards</span>
                 </h6>
+                
               </div>
+              <Button>Logout</Button>
             </div>
   )
 }

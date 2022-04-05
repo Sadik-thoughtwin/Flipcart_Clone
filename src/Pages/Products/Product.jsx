@@ -8,12 +8,14 @@ import { fetchProducts } from "../../Redux/actions/GetProduct/productAction";
 import { Link } from "react-router-dom";
 import { oneItem } from "../../Redux/actions/dataAction";
 function Product() {
-  const allProduct = useSelector((state) => state.productReducer.products);
+  const allProduct = useSelector((state) => state?.productReducer?.products);
+  console.log("allProduct",allProduct)
+ 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+   }, []);
 
   return (
     <div className="img">
@@ -41,7 +43,8 @@ function Product() {
           </Button>
           <div className="card toast-demo"></div>
         </Card>
-      ))}
+      )
+      )}
     </div>
   );
 }

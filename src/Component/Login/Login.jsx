@@ -2,63 +2,69 @@ import React, { useState, useEffect } from "react";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import axios from "axios";
-
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router';
+import { useSelector, useDispatch } from "react-redux";
+import { logindetails } from "../../Redux/actions/loginAction";
 import "./Login.css";
 
 function Login() {
-  const [formValues, setFormValues] = useState({email: "",password: ""});
+  const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const nagivate = useNavigate()
+  const dispatch = useDispatch();
+
+  const loginDetails =useSelector(state=>state?.loginReducer?.success)
+  // const userdetails = loginDetails.data.result.email
+  // const userEmail = loginDetails.data.result.message
+  // console.log("usedetails",loginDetails.data.message)
+  // console.log("usedetails",loginDetails.data.token)
+  // console.log("usedetails",loginDetails.data.result.email)
+  // console.log("usedetails",loginDetails.data.result.password)
+
+  useEffect(() => {
+    if (Object.keys(formError).length === 0 && isSubmit) {
+    }
+  }, [formError]);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    
+   
   };
 
-  const LoginData= async (formValues)=>{
-    await axios.post('https://terrible-chipmunk-41.loca.lt/login',formValues).then((result)=>{
-      console.log("result",result)
-    }).catch((error)=>{
-      console.log("Error",error)
-    })
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormError(validate(formValues));
-    LoginData(formValues)
-    console.log("formValues",formValues)
+    // console.log("formValues",formValues.email)
+    // console.log("formValues",formValues.password)
     setIsSubmit(true);
+    dispatch(logindetails(formValues));
+    nagivate("/")
+    
   };
 
-  useEffect(()=>{
-    if(Object.keys(formError).length === 0 && isSubmit){
-      
-    }
-  },[formError])
   
+
   const validate = (values) => {
     const errors = {};
     const regex = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
     if (!values.email) {
-     errors.email = "Email is required";
-    }
-    else if(!regex.test(values.email)){
+      errors.email = "Email is required";
+    } else if (!regex.test(values.email)) {
       errors.email = "This is not valid email format";
-      console.log("email",values.email)
+      console.log("email", values.email);
     }
     if (!values.password) {
       errors.password = "Pasword is required";
-    }
-    else if(values.password.length < 4){
+    } else if (values.password.length < 4) {
       errors.password = "Password must be for than 4 charactors";
-      console.log("password",values.password)
-    }
-    else if(values.password.length > 10){
+      console.log("password", values.password);
+    } else if (values.password.length > 10) {
       errors.password = "Password can't exceed more than 10 charactors";
-      console.log("password",values.password)
+      console.log("password", values.password);
     }
     return errors;
   };
@@ -73,7 +79,7 @@ function Login() {
           Orders, Wishlist and
           <br />
           <br />
-           Recommendations
+          Recommendations
         </h4>
         <img
           className="Image_login"
@@ -81,7 +87,13 @@ function Login() {
           alt="loginpageImage"
         />
       </div>
-      {Object.keys(formError).length === 0 && isSubmit? (<div style={{color:"green",marginRight:"20px"}}>Logined Succussfully</div>): ""}
+      {Object.keys(formError).length === 0 && isSubmit ? (
+        <div style={{ color: "green", marginRight: "20px" }}>
+          Logined Succussfully
+        </div>
+      ) : (
+        ""
+      )}
       <form onSubmit={handleSubmit}>
         <div className="inputField_div">
           <InputText
@@ -92,7 +104,7 @@ function Login() {
             placeholder="Enter Email/Mobile Number"
             autoComplete="off"
           />
-          <p style={{color:"red"}}>{formError.email}</p>
+          <p style={{ color: "red" }}>{formError.email}</p>
           <br />
           <br />
           <div className="password_input">
@@ -105,7 +117,7 @@ function Login() {
                 onChange={handleInput}
                 feedback={false}
               />
-               <p style={{color:"red"}}>{formError.password}</p>
+              <p style={{ color: "red" }}>{formError.password}</p>
             </div>
             <div>
               <span style={{ marginLeft: "15px" }}> Forget?</span>
@@ -113,16 +125,30 @@ function Login() {
           </div>
           <br /> <br />
           <div>
-            <span className="font_set">By continuing, you agree to Flipkart's</span>
-            <span className="font_set"><a href="#">Terms of Use</a></span>
-            <span className="font_set" >and</span>
-            <span className="font_set"><a href="#">Privacy Policy</a></span>
-          </div><br/>
+            <span className="font_set">
+              By continuing, you agree to Flipkart's
+            </span>
+            <span className="font_set">
+              <a href="#">Terms of Use</a>
+            </span>
+            <span className="font_set">and</span>
+            <span className="font_set">
+              <a href="#">Privacy Policy</a>
+            </span>
+          </div>
+          <br />
           <Button type="submit" className="userLogin p-button">
             Login
           </Button>
           <h4>OR</h4>
-          <h3>Request OTP</h3>
+          <Link to="#">Request OTP</Link>
+          <br />
+          <br />
+          <div>
+            <Link to="#" style={{ fontSize: "15px" }}>
+              New to Flipcart? Create an account
+            </Link>
+          </div>
         </div>
       </form>
     </div>
