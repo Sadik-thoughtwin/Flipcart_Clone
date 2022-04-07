@@ -6,30 +6,34 @@ import { Dialog } from "primereact/dialog";
 import Cart from "../cart/Cart";
 import More from "../More/More";
 import Login from "../Login/Login";
-import { userAction } from "../../Redux/actions/userAction";
+import { openModel,closeModel } from "../../Redux/actions/userAction";
 import { useSelector, useDispatch } from "react-redux";
 import WishList from "../Signup/WishList";
 
 export const Header = () => {
-  const selector = useSelector((state) => state.userReducer.openModel);
-  const [position, setPosition] = useState(false);
+  const selector = useSelector((state) => state.userReducer);
+  const loginDetails = useSelector((state) => console.log("state",state.loginReducer));
+  // console.log("loginDetails",loginDetails)
+  const [display, setDisplay] = useState(false);
+  const [position, setPosition] = useState('center');
   const dispatch = useDispatch();
   
   useEffect(() => {
-    setPosition(position);
-  }, [position]);
+    setPosition(!selector);
+  }, [selector]);
 
   const dialogFuncMap = {
-    position: setPosition,
+    display: setDisplay,
   };
 
-  const onClick = (box) => {
-    dispatch(userAction(!position));
+  const onClick = (box,position) => {
+    dispatch(openModel(!display));
     dialogFuncMap[`${box}`](true);
+  localStorage.setItem("userData",loginDetails)
   };
 
-  const onHide = (box) => {
-    dispatch(userAction(position));
+  const onHide = (box,position) => {
+    dispatch(closeModel(false));
     dialogFuncMap[`${box}`](false);
   };
 
@@ -48,21 +52,25 @@ export const Header = () => {
         />
 
         <div className="parent_LoginDiv button_margin">
+         
+          
+         
           <Button
             className="header_Button p-button"
             label="Login"
             onClick={() => {
-              onClick("position");
+              onClick("display");
             }}
           />
+          
           <WishList />
         </div>
 
         <Dialog
           header="Login"
-          visible={position}
+          visible={display}
           style={{ width: "50vw", height: "500px" }}
-          onHide={() => onHide("position")}
+          onHide={() => onHide("display")}
           dismissableMask={true}
         >
           <Login />

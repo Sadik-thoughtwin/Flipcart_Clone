@@ -3,25 +3,19 @@ import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router';
 import { useSelector, useDispatch } from "react-redux";
-import { logindetails } from "../../Redux/actions/loginAction";
 import "./Login.css";
+import { closeModel } from "../../Redux/actions/userAction";
+import { logindetails } from  '../../Redux/actions/loginAction';
 
 function Login() {
   const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const nagivate = useNavigate()
   const dispatch = useDispatch();
-
-  const loginDetails =useSelector(state=>state?.loginReducer?.success)
-  // const userdetails = loginDetails.data.result.email
-  // const userEmail = loginDetails.data.result.message
-  // console.log("usedetails",loginDetails.data.message)
-  // console.log("usedetails",loginDetails.data.token)
-  // console.log("usedetails",loginDetails.data.result.email)
-  // console.log("usedetails",loginDetails.data.result.password)
+  const selector = useSelector((state) => state.userReducer);
+  const loginDetails1 = useSelector((login) => login?.loginReducer?.success);
+  console.log("loginDetails", loginDetails1);
 
   useEffect(() => {
     if (Object.keys(formError).length === 0 && isSubmit) {
@@ -30,23 +24,16 @@ function Login() {
 
   const handleInput = (e) => {
     const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-   
+   setFormValues({ ...formValues, [name]: value });
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmit(true)
     setFormError(validate(formValues));
-    // console.log("formValues",formValues.email)
-    // console.log("formValues",formValues.password)
-    setIsSubmit(true);
-    dispatch(logindetails(formValues));
-    nagivate("/")
-    
+    dispatch(closeModel("display")); 
+    dispatch(logindetails(formValues))
   };
-
-  
 
   const validate = (values) => {
     const errors = {};
@@ -87,19 +74,17 @@ function Login() {
           alt="loginpageImage"
         />
       </div>
-      {Object.keys(formError).length === 0 && isSubmit ? (
-        <div style={{ color: "green", marginRight: "20px" }}>
-          Logined Succussfully
-        </div>
+      {/* {Object.keys(formError).length === 0 && isSubmit ? (
+        <div style={{ color: "red", marginRight: "50px" }}>{loginDetails1}</div>
       ) : (
         ""
-      )}
+      )} */}
       <form onSubmit={handleSubmit}>
         <div className="inputField_div">
           <InputText
             className="loginField p-inputtext"
             name="email"
-            value={formValues.email}
+            value={formValues.email.trim().toLowerCase()}
             onChange={handleInput}
             placeholder="Enter Email/Mobile Number"
             autoComplete="off"

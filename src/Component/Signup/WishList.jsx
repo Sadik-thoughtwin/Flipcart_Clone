@@ -1,8 +1,11 @@
-import React from 'react';
-import { Button } from "primereact/button";
+import React,{useState} from 'react';
+import { useSelector } from 'react-redux';
+
 import Signup from './Signup';
+import {Logout} from '../../Component/Logout/Logout';
 import './Signup.css';
 function WishList() {
+  
   return (
     <div className="dropdown_content">
               <div className='new_cutomer'>
@@ -42,7 +45,7 @@ function WishList() {
                 </h6>
                 
               </div>
-              <Button>Logout</Button>
+              <Logout />
             </div>
   )
 }

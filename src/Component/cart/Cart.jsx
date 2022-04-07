@@ -34,7 +34,7 @@ const Cart = () => {
           onHide={() => setVisibleRight(false)}
         >
           <h3>Cart List {allItem.length}</h3>
-          {allItem == "" ? (
+          {allItem == ""? (
             <div style={{ margin: "40px" }}>
               <h3>Missing Cart Items ?</h3>
               <img

@@ -1,47 +1,69 @@
-import React, { useEffect, useState } from "react";
-import { Dialog } from "primereact/dialog";
-import { Button } from "primereact/button";
-import "./Model.css";
+// import React, { useEffect, useState } from "react";
+// import { InputText } from "primereact/inputtext";
+// import { Button } from "primereact/button";
+// import "./Header.css";
+// import { Dialog } from "primereact/dialog";
+// import Login from  '../Login/Login';
+// import { userAction } from "../../Redux/actions/userAction";
+// import { useSelector, useDispatch } from "react-redux";
 
-const Model = ({showData}) => {
-  const [displayBasic, setDisplayBasic] = useState(false);
-  const [position, setPosition] = useState("center");
- 
- const dialogFuncMap = {
-    displayBasic: setDisplayBasic,
-  };
-  const onClick = (name, position) => {
-    dialogFuncMap[`${name}`](true);
+// export const Model = () => {
+//   const selector = useSelector((state) => state.userReducer.openModel);
+//   const [position, setPosition] = useState(false);
+//   const dispatch = useDispatch();
+  
+//   useEffect(() => {
+//     setPosition(position);
+//   }, [position]);
 
-    if (position) {
-      setPosition(position);
-    }
-  };
+//   const dialogFuncMap = {
+//     position: setPosition,
+//   };
 
-  const onHide = (name) => {
-    dialogFuncMap[`${name}`](false);
-  };
+//   const onClick = (box) => {
+//     dispatch(userAction(!position));
+//     dialogFuncMap[`${box}`](true);
+//   };
 
+//   const onHide = (box) => {
+//     dispatch(userAction(position));
+//     dialogFuncMap[`${box}`](false);
+//   };
 
-  return (
-    <div className="dialog-demo">
-      {showData && onClick(displayBasic)}
-      <div className="card">
-        <Button label="Login" />
-        <Dialog
-          header="Header" 
-          visible={displayBasic}
-          style={{ width: "50vw" }}
-          onHide={() => onHide("displayBasic")}
-        >
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </Dialog>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <header className="header">
+//         <img
+//           className="logo"
+//           src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png"
+//           alt="logo"
+//         />
 
-export default Model;
+//         <InputText
+//           className="InputText p-inputtext"
+//           placeholder="Search for products,brands and more"
+//         />
+
+//         <div className="parent_LoginDiv button_margin">
+//           <Button
+//             className="header_Button p-button"
+//             label="Login"
+//             onClick={() => {
+//               onClick("position");
+//             }}
+//           />
+//            </div>
+
+//         <Dialog
+//           header="Login"
+//           visible={position}
+//           style={{ width: "50vw", height: "500px" }}
+//           onHide={() => onHide("position")}
+//           dismissableMask={true}
+//         >
+//           <Login />
+//         </Dialog>
+//      </header>
+//     </div>
+//   );
+// };

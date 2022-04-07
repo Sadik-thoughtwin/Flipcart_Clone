@@ -9,8 +9,6 @@ import { Link } from "react-router-dom";
 import { oneItem } from "../../Redux/actions/dataAction";
 function Product() {
   const allProduct = useSelector((state) => state?.productReducer?.products);
-  console.log("allProduct",allProduct)
- 
   const dispatch = useDispatch();
 
   useEffect(() => {
