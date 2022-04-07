@@ -1,16 +1,19 @@
 import axios from "axios";
-import { FETCH_REQUIEST } from "../Constant/constant";
+import { SIGN_REQUIEST,SIGN_SUCCESS,SIGN_FAILURE 
+} from "../Constant/constant";
+
 
 export const signupdetail = (data) => async (dispatch) => {
-  const api = "https://wise-lion-21.loca.lt/create";
+  dispatch({ type: SIGN_REQUIEST, payload: true });
+  const api = "https://tame-rabbit-25.loca.lt/create";
 
-  const getSign = await axios
-    .post(api, data)
+  await axios.post(api, data)
     .then((responce) => {
       console.log("getSign", responce.data.message);
+      dispatch({ type: SIGN_SUCCESS, payload: responce.data});
     })
     .catch((error) => {
       console.log("error", error);
+      dispatch({ type: SIGN_FAILURE, payload: error });
     });
-  dispatch({ type: FETCH_REQUIEST, getSign });
-};
+ };

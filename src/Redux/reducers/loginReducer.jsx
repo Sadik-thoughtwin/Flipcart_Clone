@@ -18,8 +18,8 @@ export const loginReducer = (state = initialState, action) => {
         loading: true,
       };
     case LOGIN_SUCCESS:
-        console.log('action.payload',action.payload)
-      return  { ...state,
+       return  { ...state,
+            loading:true,
             success: action.payload,
       }
     case LOGIN_FAILURE:

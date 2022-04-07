@@ -5,34 +5,44 @@ import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Login.css";
-import { closeModel } from "../../Redux/actions/userAction";
-import { logindetails } from  '../../Redux/actions/loginAction';
-
-function Login() {
+import { logindetails } from "../../Redux/actions/loginAction";
+import { signmodelopen} from "../../Redux/actions/signupAction";
+import { openModel } from "../../Redux/actions/userAction";
+function Login({ hide }) {
   const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const [openBox, setOpenBox] = useState(false);
   const dispatch = useDispatch();
-  const selector = useSelector((state) => state.userReducer);
-  const loginDetails1 = useSelector((login) => login?.loginReducer?.success);
-  console.log("loginDetails", loginDetails1);
+  const signdetails = useSelector((state) => state.signupReducer);
+
+    const loginDetails1 = useSelector((login) => login?.loginReducer?.success);
 
   useEffect(() => {
     if (Object.keys(formError).length === 0 && isSubmit) {
     }
   }, [formError]);
 
+  const newUser = () => {
+    // hide("dispatch");
+    dispatch(signmodelopen(true));
+   };
+
   const handleInput = (e) => {
     const { name, value } = e.target;
-   setFormValues({ ...formValues, [name]: value });
+    setFormValues({ ...formValues, [name]: value });
   };
+  const SignUpModalOpen = () => {
+    dispatch(openModel(false))
+    dispatch(signmodelopen(true))
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmit(true)
+    setIsSubmit(true);
     setFormError(validate(formValues));
-    dispatch(closeModel("display")); 
-    dispatch(logindetails(formValues))
+    hide("display");
+    dispatch(logindetails(formValues));
   };
 
   const validate = (values) => {
@@ -130,9 +140,9 @@ function Login() {
           <br />
           <br />
           <div>
-            <Link to="#" style={{ fontSize: "15px" }}>
+            <a onClick={()=>dispatch(SignUpModalOpen())} style={{ fontSize: "15px" }}>
               New to Flipcart? Create an account
-            </Link>
+            </a>
           </div>
         </div>
       </form>

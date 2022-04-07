@@ -1,6 +1,10 @@
 export const OPEN_MODEL = "OPEN_MODEL"
 export const CLOSE_MODEL = "CLOSE_MODEL"
 
+export const SIGN_OPEN = "SIGN_OPEN"
+export const SIGN_CLOSE = "SIGN_CLOSE"
+
+
 export const FETCH_REQUIEST = "FETCH_REQUIEST"
 export const FETCH_SUCCESS = "FETCH_SUCCESS"
 export const FETCH_FAILURE = "FETCH_FAILURE"
@@ -8,6 +12,10 @@ export const FETCH_FAILURE = "FETCH_FAILURE"
 export const LOGIN_REQUIEST = "LOGIN_REQUIEST"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 export const LOGIN_FAILURE = "LOGIN_FAILURE"
+
+export const SIGN_REQUIEST = "SIGN_REQUIEST"
+export const SIGN_SUCCESS = "SIGN_SUCCESS"
+export const SIGN_FAILURE = "SIGN_FAILURE"
 
 export const ADD_TO_CART= "ADD_TO_CART"
 export const REMOVE_TO_CART= "REMOVE_TO_CART"

@@ -5,6 +5,7 @@ import {dataReducer} from './dataReducer';
 import userReducer from './userReducer';
 import {signReducer} from './signReducer';
 import {loginReducer} from './loginReducer';
+import {signupReducer} from './SignupReducer';
  const rootReducers =combineReducers({
         userReducer,
         productReducer,
@@ -12,6 +13,7 @@ import {loginReducer} from './loginReducer';
         dataReducer,
         signReducer,
         loginReducer,
+        signupReducer
       })
 
 export default rootReducers;

@@ -11,31 +11,28 @@ import { Checkbox } from "primereact/checkbox";
 import { Dialog } from "primereact/dialog";
 import { classNames } from "primereact/utils";
 import { useSelector, useDispatch } from "react-redux";
-import {Link} from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import { signmodelopen} from "../../Redux/actions/signupAction";
 import { signupdetail } from "../../Redux/actions/signAction";
 
 const Signup = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
   const [displayBasic, setDisplayBasic] = useState(false);
+  const [signup, setSignUp] = useState(false);
   const [position, setPosition] = useState("center");
   const dispatch = useDispatch();
-  const registration = useSelector((state) => state.signReducer);
+  const SignUpModal = useSelector((state) =>state.signupReducer.signUpModal);
   const dialogFuncMap = {
     displayBasic: setDisplayBasic,
   };
-
   const onClick = (name, position) => {
     dialogFuncMap[`${name}`](true);
+    dispatch(signmodelopen(!signup));
 
     if (position) {
       setPosition(position);
     }
-  };
-
-  const onHide = (name) => {
-    dialogFuncMap[`${name}`](false);
   };
 
   const formik = useFormik({
@@ -108,7 +105,6 @@ const Signup = () => {
         showHeader={false}
         breakpoints={{ "960px": "80vw" }}
         style={{ width: "30vw" }}
-        
       >
         <div className="flex align-items-center flex-column pt-6 px-3">
           <i
@@ -123,23 +119,32 @@ const Signup = () => {
         </div>
       </Dialog>
 
-      <Button style={{border:"none"}} label="SignUp" onClick={() => onClick("displayBasic")} />
+      <Button
+        style={{ border: "none" }}
+        label="SignUp"
+        onClick={() => onClick("displayBasic")}
+      />
 
       <Dialog
         header="SignUp"
-        visible={displayBasic}
+        visible={SignUpModal}
         style={{ width: "50vw" }}
-        onHide={() => onHide("displayBasic")}
+        onHide={() => dispatch(signmodelopen(false))}
         dismissableMask={true}
       >
         <div className="flex justify-content-around main-div">
-          <div><h4>Get access to your</h4><br/>
-           <h4>Orders, Wishlist and</h4> <br/>
-           <h4>Recommendations</h4>
-          <img className="sign-image" src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png" alt="flipcart"/>
+          <div>
+            <h4>Get access to your</h4>
+            <br />
+            <h4>Orders, Wishlist and</h4> <br />
+            <h4>Recommendations</h4>
+            <img
+              className="sign-image"
+              src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png"
+              alt="flipcart"
+            />
           </div>
           <div className="card">
-           
             <form onSubmit={formik.handleSubmit} className="p-fluid">
               <div className="field">
                 <span className="p-float-label">
@@ -230,8 +235,8 @@ const Signup = () => {
 
               <Button type="submit" label="Submit" className="mt-2" />
               <div className="existing-user">
-               <Link to="#" > Existing User? Log in</Link>
-                 </div>
+                <Link to="#"> Existing User? Log in</Link>
+              </div>
             </form>
           </div>
         </div>

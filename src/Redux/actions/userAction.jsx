@@ -1,15 +1,8 @@
 import { OPEN_MODEL, CLOSE_MODEL } from "../Constant/constant";
 
-export const openModel = (openBox) => {
+export const openModel = (loginStatus) => {
   return {
     type: OPEN_MODEL,
-    payload: openBox,
-  };
-};
-
-export const closeModel = (closeBox) => {
-  return {
-    type: CLOSE_MODEL,
-    payload: closeBox,
+    payload: loginStatus,
   };
 };

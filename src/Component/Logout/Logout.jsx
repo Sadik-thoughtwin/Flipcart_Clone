@@ -1,15 +1,13 @@
-import React from 'react'
+import React from "react";
 import { Button } from "primereact/button";
 
 export function Logout() {
-    // localStorage.clear()
+  localStorage.clear();
   return (
     <div>
-      <Button onClick={()=>Logout()}>Logout</Button>
+      <Button style={{ border: "none" }} onClick={() => Logout()}>
+        Logout
+      </Button>
     </div>
-  )
+  );
 }
-
-
-
-

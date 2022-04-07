@@ -6,34 +6,31 @@ import { Dialog } from "primereact/dialog";
 import Cart from "../cart/Cart";
 import More from "../More/More";
 import Login from "../Login/Login";
-import { openModel,closeModel } from "../../Redux/actions/userAction";
+import { openModel } from "../../Redux/actions/userAction";
 import { useSelector, useDispatch } from "react-redux";
 import WishList from "../Signup/WishList";
 
 export const Header = () => {
-  const selector = useSelector((state) => state.userReducer);
-  const loginDetails = useSelector((state) => console.log("state",state.loginReducer));
-  // console.log("loginDetails",loginDetails)
+  const loginModalStatus = useSelector((state) => state.userReducer.loginModal);
+  const loginDetails = useSelector((state) => state.loginReducer);
   const [display, setDisplay] = useState(false);
-  const [position, setPosition] = useState('center');
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    setPosition(!selector);
-  }, [selector]);
+    setDisplay(loginModalStatus)
+  }, [loginModalStatus]);
 
   const dialogFuncMap = {
     display: setDisplay,
   };
 
-  const onClick = (box,position) => {
+  const loginModal = (box, position) => {
     dispatch(openModel(!display));
     dialogFuncMap[`${box}`](true);
-  localStorage.setItem("userData",loginDetails)
+    localStorage.setItem("userData", loginDetails.success.token);
   };
 
-  const onHide = (box,position) => {
-    dispatch(closeModel(false));
+  const onHide = (box, position) => {
     dialogFuncMap[`${box}`](false);
   };
 
@@ -52,34 +49,38 @@ export const Header = () => {
         />
 
         <div className="parent_LoginDiv button_margin">
-         
-          
-         
-          <Button
-            className="header_Button p-button"
-            label="Login"
-            onClick={() => {
-              onClick("display");
-            }}
-          />
-          
+          {loginDetails.success === "" ? (
+            <Button
+              className="header_Button p-button"
+              label="Login"
+              onClick={() => {
+                dispatch((openModel(true)));
+              }}
+            />
+          ) : (
+            <h3 style={{ color: "white" }}>
+              {loginDetails.success?.result?.name.charAt(0).toUpperCase() +
+                loginDetails.success?.result?.name.slice(1)}
+            </h3>
+          )}
+
           <WishList />
         </div>
 
         <Dialog
           header="Login"
-          visible={display}
+          visible={loginModalStatus}
           style={{ width: "50vw", height: "500px" }}
-          onHide={() => onHide("display")}
+          onHide={() => dispatch(openModel(false))}
           dismissableMask={true}
         >
-          <Login />
+          <Login hide={onHide} />
         </Dialog>
-       <div className="button_margin">
-       <More />
-       </div>
         <div className="button_margin">
-        <Cart />
+          <More />
+        </div>
+        <div className="button_margin">
+          <Cart />
         </div>
       </header>
     </div>
