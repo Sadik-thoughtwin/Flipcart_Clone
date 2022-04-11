@@ -11,28 +11,29 @@ import { Checkbox } from "primereact/checkbox";
 import { Dialog } from "primereact/dialog";
 import { classNames } from "primereact/utils";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { signmodelopen} from "../../Redux/actions/signupAction";
+import { signmodelopen } from "../../Redux/actions/signupAction";
 import { signupdetail } from "../../Redux/actions/signAction";
+import { openModel } from "../../Redux/actions/userAction";
 
 const Signup = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
-  const [displayBasic, setDisplayBasic] = useState(false);
+  
   const [signup, setSignUp] = useState(false);
   const [position, setPosition] = useState("center");
   const dispatch = useDispatch();
-  const SignUpModal = useSelector((state) =>state.signupReducer.signUpModal);
-  const dialogFuncMap = {
-    displayBasic: setDisplayBasic,
-  };
+  const SignUpModal = useSelector((state) => state.signupReducer.signUpModal);
+  
   const onClick = (name, position) => {
-    dialogFuncMap[`${name}`](true);
     dispatch(signmodelopen(!signup));
 
     if (position) {
       setPosition(position);
     }
+  };
+  const existingUser = () => {
+    dispatch(openModel(true));
+    dispatch(signmodelopen(false));
   };
 
   const formik = useFormik({
@@ -67,9 +68,10 @@ const Signup = () => {
 
       return errors;
     },
-    onSubmit: (data) => {
+      onSubmit: (data) => {
       setFormData(data);
       formik.resetForm();
+      console.log("signdata",data)
       dispatch(signupdetail(data));
     },
   });
@@ -235,7 +237,13 @@ const Signup = () => {
 
               <Button type="submit" label="Submit" className="mt-2" />
               <div className="existing-user">
-                <Link to="#"> Existing User? Log in</Link>
+                <a
+                  href="#"
+                  className="existingUser"
+                  onClick={() => dispatch(existingUser())}
+                >
+                  Existing User? Log in
+                </a>
               </div>
             </form>
           </div>

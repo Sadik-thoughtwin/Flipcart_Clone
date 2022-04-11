@@ -1,21 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "../../App";
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import Notification from "../More/Notification";
 import Seller from "../More/Seller";
-import Customer from "../More/Customer";
 import Signup from "../Signup/Signup";
 import Details from "../Details/Details";
-import{ Header} from '../Header/Header'
+import { Header } from "../Header/Header";
+import {SellerLogin} from '../More/SellerLogin'
 
 
 function GetRoutes() {
 
-  const [loader,setLoader] =useState(false)
-
-  useEffect(()=>{
-    setLoader(!loader)
-  },[])
   const allRoutes = [
     { path: "/", Component: App },
     { path: "/notification", Component: Notification },
@@ -23,18 +18,26 @@ function GetRoutes() {
     { path: "/seller", Component: Seller },
     { path: "/signup", Component: Signup },
     { path: "/details", Component: Details },
-    ];
+    { path: "/sellersign", Component: Seller },
+    {path:"/sellerlogin",Component:SellerLogin}
+    
+  ];
 
   return (
-    <> 
-    <BrowserRouter>
+    <>
+      <BrowserRouter>
         <Routes>
-         {allRoutes?.map((item,index) => {
-            return <Route  key={index} path={item.path} element={<item.Component />} />;
+          {allRoutes?.map((item, index) => {
+            return (
+              <Route
+                key={index}
+                path={item.path}
+                element={<item.Component />}
+              />
+            );
           })}
         </Routes>
       </BrowserRouter>
-      
     </>
   );
 }

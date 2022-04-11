@@ -6,36 +6,29 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Login.css";
 import { logindetails } from "../../Redux/actions/loginAction";
-import { signmodelopen} from "../../Redux/actions/signupAction";
+import { signmodelopen } from "../../Redux/actions/signupAction";
 import { openModel } from "../../Redux/actions/userAction";
 function Login({ hide }) {
   const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const [openBox, setOpenBox] = useState(false);
   const dispatch = useDispatch();
   const signdetails = useSelector((state) => state.signupReducer);
-
-    const loginDetails1 = useSelector((login) => login?.loginReducer?.success);
+  const loginDetails1 = useSelector((login) => login?.loginReducer?.success);
 
   useEffect(() => {
     if (Object.keys(formError).length === 0 && isSubmit) {
     }
   }, [formError]);
 
-  const newUser = () => {
-    // hide("dispatch");
-    dispatch(signmodelopen(true));
-   };
-
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
   const SignUpModalOpen = () => {
-    dispatch(openModel(false))
-    dispatch(signmodelopen(true))
-  }
+    dispatch(openModel(false));
+    dispatch(signmodelopen(true));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -140,7 +133,11 @@ function Login({ hide }) {
           <br />
           <br />
           <div>
-            <a onClick={()=>dispatch(SignUpModalOpen())} style={{ fontSize: "15px" }}>
+            <a href="#"
+              onClick={() => dispatch(SignUpModalOpen())}
+            
+              className="createUser"
+            >
               New to Flipcart? Create an account
             </a>
           </div>

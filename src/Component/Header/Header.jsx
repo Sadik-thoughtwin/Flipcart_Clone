@@ -17,21 +17,13 @@ export const Header = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setDisplay(loginModalStatus)
+    setDisplay(loginModalStatus);
   }, [loginModalStatus]);
 
-  const dialogFuncMap = {
-    display: setDisplay,
-  };
-
-  const loginModal = (box, position) => {
-    dispatch(openModel(!display));
-    dialogFuncMap[`${box}`](true);
+  
+  const loginModal = (box) => {
     localStorage.setItem("userData", loginDetails.success.token);
-  };
-
-  const onHide = (box, position) => {
-    dialogFuncMap[`${box}`](false);
+   dispatch(openModel(false))
   };
 
   return (
@@ -54,7 +46,7 @@ export const Header = () => {
               className="header_Button p-button"
               label="Login"
               onClick={() => {
-                dispatch((openModel(true)));
+                dispatch(openModel(true));
               }}
             />
           ) : (
@@ -71,10 +63,11 @@ export const Header = () => {
           header="Login"
           visible={loginModalStatus}
           style={{ width: "50vw", height: "500px" }}
-          onHide={() => dispatch(openModel(false))}
+          onHide={loginModal}
+          loginModal
           dismissableMask={true}
         >
-          <Login hide={onHide} />
+          <Login />
         </Dialog>
         <div className="button_margin">
           <More />

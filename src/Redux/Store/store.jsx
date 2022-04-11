@@ -14,3 +14,5 @@ const store = createStore(pReducer, middleware);
 const persistor = persistStore(store);
 export { persistor, store };
 
+
+

@@ -1,4 +1,4 @@
-import { OPEN_MODEL, CLOSE_MODEL } from "../Constant/constant";
+import { OPEN_MODEL } from "../Constant/constant";
 
 export const openModel = (loginStatus) => {
   return {
