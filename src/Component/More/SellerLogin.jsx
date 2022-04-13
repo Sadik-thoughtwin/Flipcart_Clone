@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
-import { Calendar } from "primereact/calendar";
 import { Password } from "primereact/password";
-import { Checkbox } from "primereact/checkbox";
 import { Dialog } from "primereact/dialog";
 import { classNames } from "primereact/utils";
-import {loginsellerAction} from '../../Redux/actions/loginsellerAction';
-import { useSelector,useDispatch } from "react-redux";
-import {Link} from 'react-router-dom';
+import { loginsellerAction } from "../../Redux/actions/loginsellerAction";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import Sellerheader from "./Sellerheader";
+import { useNavigate } from "react-router";
 
 export const SellerLogin = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
-    const dispatch= useDispatch()
-
+  const [getError,setGetError] =useState("")
+  const dispatch = useDispatch();
+  const loginSuccess = useSelector((state)=>state.loginsellerReducer)
+  console.log("loginSuccess",loginSuccess.getRequest)
+  const navigate = useNavigate();
+ 
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -44,7 +47,12 @@ export const SellerLogin = () => {
       setFormData(data);
       setShowMessage(true);
       formik.resetForm();
-      dispatch(loginsellerAction(data))
+      dispatch(loginsellerAction(data));
+      setGetError(loginSuccess.getRequest)
+      // if(){
+      //   navigate("/Admin");
+      // }
+      
     },
   });
 
@@ -97,6 +105,7 @@ export const SellerLogin = () => {
 
       <div className="flex justify-content-center">
         <div className="card">
+           <h3>{getError}</h3>
           <h2 className="text-justify">Seller Login </h2>
           <form onSubmit={formik.handleSubmit} className="p-fluid">
             <div className="field">
@@ -147,7 +156,7 @@ export const SellerLogin = () => {
             </div>
 
             <Button type="submit" label="Submit" className="mt-2" />
-            <Link to="/sellersign" >Signup</Link>
+            <Link to="/sellersign">Signup</Link>
           </form>
         </div>
       </div>

@@ -1,0 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.admin-header {
+  background-color: black;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+}
+.admin-dash{
+  color: white;
+   text-align :center;
+   padding-top: 30px;
+   margin-left:137px ;
+   font-size: 25px;
+}
+.p-input-icon-left > .p-inputtext {
+  height: 38px;
+  margin-top: 10px;
+}

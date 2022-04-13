@@ -1,12 +1,12 @@
 import axios from "axios";
 import {
-  LOGIN_REQUIEST,
+  LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
 } from "../Constant/constant";
 
 export const logindetails = (formValues) => async (dispatch) => {
-  dispatch({ type: LOGIN_REQUIEST, payload: true });
+  dispatch({ type: LOGIN_REQUEST, payload: true });
   await axios
     .post("https://tame-rabbit-25.loca.lt/login", formValues)
     .then((result) => {

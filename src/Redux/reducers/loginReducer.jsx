@@ -1,5 +1,5 @@
 import {
-  LOGIN_REQUIEST,
+  LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
 } from "../Constant/constant";
@@ -12,7 +12,7 @@ const initialState = {
 export const loginReducer = (state = initialState, action) => {
     
   switch (action.type) {
-    case LOGIN_REQUIEST:
+    case LOGIN_REQUEST:
       return {
         ...state,
         loading: true,

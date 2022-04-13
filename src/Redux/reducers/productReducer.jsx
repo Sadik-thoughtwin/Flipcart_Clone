@@ -1,5 +1,5 @@
 import  {
-    FETCH_REQUIEST ,
+    FETCH_REQUEST ,
     FETCH_SUCCESS,
     FETCH_FAILURE
 } from '../Constant/constant'
@@ -12,7 +12,7 @@ const productReducer =  (state=initialState,action)=> {
 
     switch(action.type){
 
-        case FETCH_REQUIEST : 
+        case FETCH_REQUEST : 
         return {
             ...state,
             products:action.payload

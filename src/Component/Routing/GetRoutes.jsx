@@ -7,7 +7,12 @@ import Signup from "../Signup/Signup";
 import Details from "../Details/Details";
 import { Header } from "../Header/Header";
 import {SellerLogin} from '../More/SellerLogin'
-
+import { SellerList } from "../../AdminPanel/AllSeller/SellerList";
+import { UserList } from "../../AdminPanel/UserList/UserList";
+import { ProductList } from "../../AdminPanel/ProductList/ProductList";
+import {Dashboard} from '../../AdminPanel/Dashboard';
+import { ChartLine } from "../../AdminPanel/Chart/ChartLine";
+import {AddProduct} from '../../AdminPanel/AddProduct/AddProduct'
 
 function GetRoutes() {
 
@@ -19,7 +24,13 @@ function GetRoutes() {
     { path: "/signup", Component: Signup },
     { path: "/details", Component: Details },
     { path: "/sellersign", Component: Seller },
-    {path:"/sellerlogin",Component:SellerLogin}
+    {path:"/sellerlogin",Component:SellerLogin},
+    {path:"/sellerlist",Component:SellerList},
+    {path:"/userlist",Component:UserList},
+    {path:"/productlist",Component:ProductList},
+    {path:"/dash",Component:Dashboard},
+    {path:"/dashboard",Component:ChartLine},
+    {path:"/add",Component:AddProduct}
     
   ];
 

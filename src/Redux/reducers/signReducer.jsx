@@ -1,4 +1,4 @@
-import { SIGN_REQUIEST,SIGN_SUCCESS,SIGN_FAILURE } from "../Constant/constant";
+import { SIGN_REQUEST,SIGN_SUCCESS,SIGN_FAILURE } from "../Constant/constant";
 const initialState= {
    load:false,
    success:"",
@@ -6,7 +6,7 @@ const initialState= {
 }
 export const signReducer = (state=initialState,action) =>{
     switch (action.type) {
-        case SIGN_REQUIEST:
+        case SIGN_REQUEST:
           return {
             ...state,
             loading: true,

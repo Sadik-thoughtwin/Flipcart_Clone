@@ -1,4 +1,4 @@
-import { LOGIN_SELLER_FAILURE,LOGIN_SELLER_SUCCESS,LOGIN_SELLER_FAILURE } from "../Constant/constant"
+import { LOGIN_SELLER_FAILURE,LOGIN_SELLER_SUCCESS} from "../Constant/constant"
 const initialState= {
     getRequest:false,
     success:"",

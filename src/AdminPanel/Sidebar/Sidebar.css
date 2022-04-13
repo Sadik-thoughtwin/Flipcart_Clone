@@ -1,0 +1,29 @@
+.sidebar{
+    width:200px;
+    height: 100vh;
+    background-color:black;
+    position: fixed;
+}
+.seller-list{
+    padding-left: 50px;
+    text-align: center;
+    color:white;
+    text-decoration: none;
+   }
+.ul-div{
+    margin-top: 50px;
+    margin-left: 30px;
+    }
+    .ul-div>li{
+        margin-top: 20px;
+    }
+    
+    
+    .ul-div .li-div .list{
+        text-decoration: none;
+        color:white;
+    }
+    .dashboard{
+        text-decoration: none;
+        color:white
+    }

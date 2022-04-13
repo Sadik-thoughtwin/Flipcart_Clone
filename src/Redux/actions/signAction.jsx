@@ -1,12 +1,12 @@
 import axios from "axios";
 import {
-  SIGN_REQUIEST,
+  SIGN_REQUEST,
   SIGN_SUCCESS,
   SIGN_FAILURE,
 } from "../Constant/constant";
 
 export const signupdetail = (data) => async (dispatch) => {
-  dispatch({ type: SIGN_REQUIEST, payload: true });
+  dispatch({ type: SIGN_REQUEST, payload: true });
   await axios
     .post("https://tame-rabbit-25.loca.lt/create", data)
     .then((responce) => {

@@ -1,0 +1,26 @@
+.table {
+  position: absolute;
+  background-color: gray;
+  width: 87%;
+  margin-left: 200px;
+  margin-top: 80px;
+  color: white;
+}
+
+.coloumn-details > tr > th,
+td {
+  margin: 30px;
+  width: 260px;
+  padding: 10px 20px 5px 100px;
+}
+.coloumn-details > tr > td {
+  margin-left: 10px;
+}
+
+.coloumn-details > tr > td:nth-child(odd) {
+  background: lightcoral;
+}
+
+.coloumn-details > tr > td:nth-child(even) {
+  background: cadetblue;
+}

@@ -1,0 +1,14 @@
+ .product-table {
+    padding-top:90px;
+    margin-left:130px;
+    background-color: black;
+
+}
+.tr-field>th,td{
+   margin-left:10px;
+  color:white;
+}
+
+.thead-data.tr-field{
+    margin-left:10px;
+}

@@ -1,5 +1,5 @@
 import {
-  SELLER_REQUIEST,
+  SELLER_REQUEST,
   SELLER_SUCCESS,
   SELLER_FAILURE,
 } from "../Constant/constant";
@@ -12,7 +12,7 @@ const initialState = {
 
 export const signupsellerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SELLER_REQUIEST:
+    case SELLER_REQUEST:
       return {
          
           getData:true,

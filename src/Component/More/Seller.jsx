@@ -4,7 +4,6 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
 import { InputNumber } from "primereact/inputnumber";
-import { Checkbox } from "primereact/checkbox";
 import { Dialog } from "primereact/dialog";
 import { Divider } from "primereact/divider";
 import { classNames } from "primereact/utils";
@@ -44,14 +43,18 @@ const Seller = () => {
       if (!getdata.phone) {
         errors.phone = "phone number is required";
       } else if (/^[0-9]d{10}$/.test(getdata.phone)) {
-        errors.phone = "phone number is required1";
+        errors.phone = "phone number is required 10 digit";
+      }
+      else if (getdata.phone.length<10){
+        errors.phone = "phone number is required 10 digit";
       }
       if (!getdata.password) {
         errors.password = "Password is required.";
       }
-
-     
-
+      else if(getdata.password.length<5){
+        errors.password = "Password is required minimum 6 digit.";
+      }
+      
       return errors;
     },
     onSubmit: (getdata) => {
@@ -92,7 +95,7 @@ const Seller = () => {
         <li>At least one lowercase</li>
         <li>At least one uppercase</li>
         <li>At least one numeric</li>
-        <li>Minimum 8 characters</li>
+        <li>Minimum 6 characters</li>
       </ul>
     </>
   );
