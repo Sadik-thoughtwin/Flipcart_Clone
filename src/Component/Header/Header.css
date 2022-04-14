@@ -23,6 +23,7 @@
 
 .p-button:enabled{
   border: none;
+  display: block;
 }
 
 .logo {

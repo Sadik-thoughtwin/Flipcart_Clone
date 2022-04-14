@@ -8,7 +8,7 @@ import {
 export const signupdetail = (data) => async (dispatch) => {
   dispatch({ type: SIGN_REQUEST, payload: true });
   await axios
-    .post("https://tame-rabbit-25.loca.lt/create", data)
+    .post("https://strange-goat-74.loca.lt/auth/user/register", data)
     .then((responce) => {
      
       dispatch({ type: SIGN_SUCCESS, payload: responce.data });

@@ -15,12 +15,13 @@ import { useNavigate } from "react-router";
 export const SellerLogin = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
-  const [getError,setGetError] =useState("")
+  const [getError, setGetError] = useState("");
   const dispatch = useDispatch();
-  const loginSuccess = useSelector((state)=>state.loginsellerReducer)
-  console.log("loginSuccess",loginSuccess.getRequest)
+  const loginSuccess = useSelector((state) => state.loginsellerReducer);
+  console.log("loginSuccess", loginSuccess.getSuccess);
   const navigate = useNavigate();
- 
+  const token = localStorage.getItem('Admin-token')
+  console.log("token",token)
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -48,10 +49,8 @@ export const SellerLogin = () => {
       setShowMessage(true);
       formik.resetForm();
       dispatch(loginsellerAction(data));
-      setGetError(loginSuccess.getRequest)
-      // if(){
-      //   navigate("/Admin");
-      // }
+      setGetError(loginSuccess.getRequest);
+     
       
     },
   });
@@ -65,6 +64,10 @@ export const SellerLogin = () => {
       )
     );
   };
+  useEffect(()=>{
+    if(localStorage.getItem("Admin-token"))
+    {navigate("/sellerlist")};
+  },[token])
 
   const dialogFooter = (
     <div className="flex justify-content-center">
@@ -94,7 +97,7 @@ export const SellerLogin = () => {
             className="pi pi-check-circle"
             style={{ fontSize: "5rem", color: "var(--green-500)" }}
           ></i>
-          <h5>Login Successful!</h5>
+          <h5>{loginSuccess?.getSuccess?.data?.message}</h5>
           <p style={{ lineHeight: 1.5, textIndent: "1rem" }}>
             Your account is registered under name <b>{formData.name}</b> ; it'll
             be valid next 30 days without activation. Please check{" "}
@@ -105,7 +108,7 @@ export const SellerLogin = () => {
 
       <div className="flex justify-content-center">
         <div className="card">
-           <h3>{getError}</h3>
+          <h3>{getError}</h3>
           <h2 className="text-justify">Seller Login </h2>
           <form onSubmit={formik.handleSubmit} className="p-fluid">
             <div className="field">

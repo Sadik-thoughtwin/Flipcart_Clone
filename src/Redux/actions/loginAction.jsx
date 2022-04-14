@@ -8,7 +8,7 @@ import {
 export const logindetails = (formValues) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST, payload: true });
   await axios
-    .post("https://tame-rabbit-25.loca.lt/login", formValues)
+    .post("https://strange-goat-74.loca.lt/auth/user/login", formValues)
     .then((result) => {
       dispatch({ type: LOGIN_SUCCESS, payload: result.data });
     })

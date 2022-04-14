@@ -12,11 +12,13 @@ import { signupsellerAction } from "../../Redux/actions/signupsellerAction";
 import {Link} from 'react-router-dom';
 import "./seller.css";
 import Sellerheader from "./Sellerheader";
+import { useNavigate } from "react-router-dom";
 
 const Seller = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [formgetData, setFormgetData] = useState({});
   const dispatch = useDispatch();
+  const navigate =useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -41,12 +43,12 @@ const Seller = () => {
         errors.email = "Invalid email address. E.g. example@email.com";
       }
       if (!getdata.phone) {
-        errors.phone = "phone number is required";
+        errors.phone = "phone phone is required";
       } else if (/^[0-9]d{10}$/.test(getdata.phone)) {
-        errors.phone = "phone number is required 10 digit";
+        errors.phone = " phone is required 10 digit";
       }
       else if (getdata.phone.length<10){
-        errors.phone = "phone number is required 10 digit";
+        errors.phone = " phone is required 10 digit";
       }
       if (!getdata.password) {
         errors.password = "Password is required.";
@@ -62,6 +64,7 @@ const Seller = () => {
       setShowMessage(true);
       formik.resetForm();
       dispatch(signupsellerAction(getdata));
+      navigate('/sellerlogin')
       console.log("getdata", getdata);
     },
   });
@@ -179,7 +182,7 @@ const Seller = () => {
             <div>
               <span className="field">
                 <InputText
-                type="number"
+               
                   id="phone"
                   name="phone"
                   value={formik.values.phone}

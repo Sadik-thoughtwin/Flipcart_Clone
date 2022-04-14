@@ -16,6 +16,7 @@ export function Dashboard() {
         <div className="header-div">
           <Panel />
         </div>
+        <button >Logout</button>
       </header>
      
     </div>

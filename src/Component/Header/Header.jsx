@@ -9,6 +9,7 @@ import Login from "../Login/Login";
 import { openModel } from "../../Redux/actions/userAction";
 import { useSelector, useDispatch } from "react-redux";
 import WishList from "../Signup/WishList";
+import { API_BASE_URL } from "../../config/env.config";
 
 export const Header = () => {
   const loginModalStatus = useSelector((state) => state.userReducer.loginModal);
@@ -18,8 +19,9 @@ export const Header = () => {
 
   useEffect(() => {
     setDisplay(loginModalStatus);
+   
   }, [loginModalStatus]);
-
+  console.log("URL",API_BASE_URL)
   
   const loginModal = (box) => {
     localStorage.setItem("userData", loginDetails.success.token);

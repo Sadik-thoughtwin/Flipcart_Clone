@@ -13,8 +13,21 @@ export function SellerList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(AllSellerAction());
+    dispatch(AllSellerAction(localStorage.getItem("Admin-token")));
   }, []);
+  const test = (id,e)=>{
+   {
+    allSeller.data.find((seller)=>{
+      if(seller.id !==id){
+        // e.value===true
+        console.log("e",e)
+      }
+      else{
+        setValue(false)
+      }
+    })
+   }
+  }
   return (
     <div>
       <Dashboard />
@@ -30,15 +43,15 @@ export function SellerList() {
         </tr>
        </thead>
 
-        {allSeller?.map((seller, index) => {
+        {allSeller.data?.map((seller, index) => {
           return (
             <tbody key={index} className="coloumn-details">
               <tr className="list-tr">
                 <td>{seller.fullName}</td>
-                <td>{seller.phone}</td>
+                <td>{seller.number}</td>
                 <td>{seller.email}</td>
                 <td>{seller.role}</td>
-                <td><InputSwitch checked={value} onChange={(e) => setValue(e.value)} /></td>
+                <td><InputSwitch checked={value} onChange={(e) => test(seller.id,e)} /></td>
               
               </tr>
             </tbody>

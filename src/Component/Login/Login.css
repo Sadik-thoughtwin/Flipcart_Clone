@@ -31,7 +31,6 @@ div.inputField_div .loginField {
 
 .p-inputtext:enabled:focus {
   outline: 0 none;
-  /* outline-offset: 0; */
   box-shadow: none !important;
   
 }

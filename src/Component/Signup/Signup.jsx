@@ -41,9 +41,10 @@ const Signup = () => {
       name: "",
       email: "",
       password: "",
-      accept: false,
+      // accept: false,
     },
     validate: (data) => {
+     console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$", data)
       let errors = {};
 
       if (!data.name) {
@@ -62,16 +63,15 @@ const Signup = () => {
         errors.password = "Password is required.";
       }
 
-      if (!data.accept) {
-        errors.accept = "You need to agree to the terms and conditions.";
-      }
+      // if (!data.accept) {
+      //   errors.accept = "You need to agree to the terms and conditions.";
+      // }
 
       return errors;
     },
       onSubmit: (data) => {
       setFormData(data);
       formik.resetForm();
-      console.log("signdata",data)
       dispatch(signupdetail(data));
     },
   });
@@ -215,7 +215,7 @@ const Signup = () => {
                 {getFormErrorMessage("password")}
               </div>
 
-              <div className="field-checkbox">
+              {/* <div className="field-checkbox">
                 <Checkbox
                   inputId="accept"
                   name="accept"
@@ -233,7 +233,7 @@ const Signup = () => {
                 >
                   I agree to the terms and conditions*
                 </label>
-              </div>
+              </div> */}
 
               <Button type="submit" label="Submit" className="mt-2" />
               <div className="existing-user">
