@@ -1,35 +1,38 @@
 /* moredropdown list */
-.dropdownItem{
-   position: absolute;
-   margin-top: 2px;
-    display: none;
-    background-color: white;
-  }
-  .dropdownItem>li{
-    list-style: none;
-    margin-left: -93px;
-    padding: 15px 0;
-    width: 187px;
-    background-color: #ffffff;
-  }
- 
-  .dropdownItem:before{
-    content: "";
-    margin-top: -12px;
-    margin-left: -74px;
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background-color: white;
-    transform: rotate(44deg);
-    }
-    
-.more_list:hover .dropdownItem{
+.dropdownItem {
+  position: absolute;
+  margin-top: 2px;
+  display: none;
+  background-color: white;
+}
+.dropdownItem > li {
+  list-style: none;
+  margin-left: -93px;
+  padding: 15px 0;
+  width: 187px;
+  background-color: #ffffff;
+}
+
+.dropdownItem:before {
+  content: "";
+  margin-top: -12px;
+  margin-left: -74px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  transform: rotate(44deg);
+}
+
+.more_list:hover .dropdownItem {
   display: block;
   z-index: 999;
-   
 }
-  .seller{
-      text-decoration: none;
-      color:black;
-  }
+.seller {
+  text-decoration: none;
+  color: black;
+}
+.more {
+  color: white;
+  margin-top: 3px;
+}

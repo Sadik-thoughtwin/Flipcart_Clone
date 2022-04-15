@@ -1,0 +1,26 @@
+.checkout-item{
+    margin-top: 10px;
+    display: flex;
+    flex-wrap:wrap;
+    margin-bottom: 20px;
+}
+
+.all-images{
+    height: 360px;
+    width: 350px;
+}
+.descripes-details{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left:20px;
+    padding-top: 10px;
+    }
+    .check-details{
+        margin-left:10px;
+        
+    }
+    .place-order{
+        margin-top: 20px !important;
+        width: 200px !important;
+  }

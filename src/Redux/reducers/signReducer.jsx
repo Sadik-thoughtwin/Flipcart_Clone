@@ -2,7 +2,7 @@ import { SIGN_REQUEST,SIGN_SUCCESS,SIGN_FAILURE } from "../Constant/constant";
 const initialState= {
    load:false,
    success:"",
-   error:""
+  
 }
 export const signReducer = (state=initialState,action) =>{
     switch (action.type) {
@@ -13,13 +13,13 @@ export const signReducer = (state=initialState,action) =>{
           };
         case SIGN_SUCCESS:
            return  { ...state,
-                loading:true,
+                load:true,
                 success: action.payload,
           }
         case SIGN_FAILURE:
           console.log("action", action.payload);
           return {
-            loading: false,
+            loading:false,
             error: action.payload,
           };
     

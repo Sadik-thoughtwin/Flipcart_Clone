@@ -21,8 +21,7 @@ function Product() {
         <Card className="cardData" key={index}>
           <Link to="/details" onClick={() => dispatch(oneItem(items.id))}>
             <img
-              className="images"
-              src={items.imgUrl}
+            src={items.imgUrl}
               alt="images"
               height="200"
               width="200"

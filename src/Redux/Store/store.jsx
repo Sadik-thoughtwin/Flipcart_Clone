@@ -1,12 +1,11 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import rootReducers from "../reducers/rootReducer";
 const persistConfig = {
-  key: 'authType',
+  key: "authType",
   storage: storage,
-
 };
 const pReducer = persistReducer(persistConfig, rootReducers);
 const middleware = applyMiddleware(thunk);

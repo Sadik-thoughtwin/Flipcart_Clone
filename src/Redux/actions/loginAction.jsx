@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_BASE_URL } from "../../config/env.config";
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -8,7 +9,11 @@ import {
 export const logindetails = (formValues) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST, payload: true });
   await axios
-    .post("https://strange-goat-74.loca.lt/auth/user/login", formValues)
+    .post(`${API_BASE_URL}/auth/user/login`, formValues, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
     .then((result) => {
       dispatch({ type: LOGIN_SUCCESS, payload: result.data });
     })

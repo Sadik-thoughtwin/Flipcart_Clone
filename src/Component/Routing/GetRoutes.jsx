@@ -13,6 +13,7 @@ import { ProductList } from "../../AdminPanel/ProductList/ProductList";
 import {Dashboard} from '../../AdminPanel/Dashboard';
 import { ChartLine } from "../../AdminPanel/Chart/ChartLine";
 import {AddProduct} from '../../AdminPanel/AddProduct/AddProduct'
+import Checkout from "../../Pages/Checkout/Checkout";
 
 function GetRoutes() {
 
@@ -30,7 +31,8 @@ function GetRoutes() {
     {path:"/productlist",Component:ProductList},
     {path:"/dash",Component:Dashboard},
     {path:"/dashboard",Component:ChartLine},
-    {path:"/add",Component:AddProduct}
+    {path:"/add",Component:AddProduct},
+    {path:"/checkout", Component:Checkout}
     
   ];
 

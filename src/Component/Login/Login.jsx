@@ -3,23 +3,25 @@ import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
+import { Dialog } from "primereact/dialog";
 import { useSelector, useDispatch } from "react-redux";
 import "./Login.css";
 import { logindetails } from "../../Redux/actions/loginAction";
 import { signmodelopen } from "../../Redux/actions/signupAction";
 import { openModel } from "../../Redux/actions/userAction";
-function Login({ hide }) {
+function Login() {
   const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+  // const [isSubmit, setIsSubmit] = useState(false);
+  const [showMessages,setShowMessages] = useState(false)
   const dispatch = useDispatch();
   const signdetails = useSelector((state) => state.signupReducer);
   const loginDetails1 = useSelector((login) => login?.loginReducer?.success);
-
-  useEffect(() => {
-    if (Object.keys(formError).length === 0 && isSubmit) {
-    }
-  }, [formError]);
+  // console.log("object",loginDetails1)
+  // useEffect(() => {
+  //   if (Object.keys(formError).length === 0 && isSubmit) {
+  //   }
+  // }, [formError]);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -32,10 +34,11 @@ function Login({ hide }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmit(true);
+    // setIsSubmit(true);
     setFormError(validate(formValues));
-    hide("display");
     dispatch(logindetails(formValues));
+    dispatch(openModel(false));
+    setShowMessages(true)
   };
 
   const validate = (values) => {
@@ -58,9 +61,45 @@ function Login({ hide }) {
     }
     return errors;
   };
+  const dialogFooters = (
+    <div className="flex justify-content-center">
+      <Button
+        label="OK"
+        className="p-button-text"
+        autoFocus
+        onClick={() => setShowMessages(false)}
+      />
+    </div>
+  );
+  const checkOut = () =>{
+    
+  }
 
   return (
     <div className="Login_div">
+      <div>
+        <Dialog
+        visible={showMessages}
+        onHide={() => setShowMessages(true)}
+        position="top"
+        footer={dialogFooters}
+        showHeader={false}
+        breakpoints={{ "960px": "80vw" }}
+        style={{ width: "30vw" }}
+      >
+        <div className="flex align-items-center flex-column pt-6 px-3">
+          <i
+            className="pi pi-check-circle"
+            style={{ fontSize: "5rem", color: "var(--green-500)" }}
+          ></i>
+          <h5>Registration!</h5>
+          <p style={{ lineHeight: 1.5, textIndent: "1rem" }}>
+            Your account is registered under fullName <b>{formValues.fullName}</b>
+            <br /> Your Email is:<b>{formValues.email}</b>
+          </p>
+     </div>
+      </Dialog>
+        </div>
       <div className="Image_div">
         <h4 className="textItem">
           Get access to your
@@ -133,9 +172,9 @@ function Login({ hide }) {
           <br />
           <br />
           <div>
-            <a href="#"
+            <a
+              href="#"
               onClick={() => dispatch(SignUpModalOpen())}
-            
               className="createUser"
             >
               New to Flipcart? Create an account

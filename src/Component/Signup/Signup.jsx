@@ -18,18 +18,18 @@ import { openModel } from "../../Redux/actions/userAction";
 const Signup = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
-  
-  const [signup, setSignUp] = useState(false);
-  const [position, setPosition] = useState("center");
+
+  // const [signup, setSignUp] = useState(false);
+  // const [position, setPosition] = useState("center");
   const dispatch = useDispatch();
   const SignUpModal = useSelector((state) => state.signupReducer.signUpModal);
-  
-  const onClick = (name, position) => {
-    dispatch(signmodelopen(!signup));
 
-    if (position) {
-      setPosition(position);
-    }
+  const handleClick = (fullName) => {
+    dispatch(signmodelopen(true));
+
+    // if (position) {
+    //   setPosition(position);
+    // }
   };
   const existingUser = () => {
     dispatch(openModel(true));
@@ -38,17 +38,16 @@ const Signup = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      fullName: "",
       email: "",
+      phone: "",
       password: "",
-      // accept: false,
     },
     validate: (data) => {
-     console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$", data)
       let errors = {};
 
-      if (!data.name) {
-        errors.name = "Name is required.";
+      if (!data.fullName) {
+        errors.fullName = "Name is required.";
       }
 
       if (!data.email) {
@@ -62,19 +61,20 @@ const Signup = () => {
       if (!data.password) {
         errors.password = "Password is required.";
       }
-
-      // if (!data.accept) {
-      //   errors.accept = "You need to agree to the terms and conditions.";
-      // }
-
       return errors;
     },
-      onSubmit: (data) => {
+    onSubmit: (data) => {
       setFormData(data);
       formik.resetForm();
       dispatch(signupdetail(data));
+      setShowMessage(true);
     },
   });
+
+  const closeFooter= ()=>{
+    setShowMessage(false)
+    dispatch(signmodelopen(false));
+  }
 
   const isFormFieldValid = (name) =>
     !!(formik.touched[name] && formik.errors[name]);
@@ -92,7 +92,7 @@ const Signup = () => {
         label="OK"
         className="p-button-text"
         autoFocus
-        onClick={() => setShowMessage(false)}
+        onClick={() => closeFooter()}
       />
     </div>
   );
@@ -115,7 +115,7 @@ const Signup = () => {
           ></i>
           <h5>Registration!</h5>
           <p style={{ lineHeight: 1.5, textIndent: "1rem" }}>
-            Your account is registered under name <b>{formData.name}</b>
+            Your account is registered under fullName <b>{formData.fullName}</b>
             <br /> Your Email is:<b>{formData.email}</b>
           </p>
         </div>
@@ -124,7 +124,7 @@ const Signup = () => {
       <Button
         style={{ border: "none" }}
         label="SignUp"
-        onClick={() => onClick("displayBasic")}
+        onClick={() => handleClick("displayBasic")}
       />
 
       <Dialog
@@ -151,25 +151,25 @@ const Signup = () => {
               <div className="field">
                 <span className="p-float-label">
                   <InputText
-                    id="name"
-                    name="name"
-                    value={formik.values.name}
+                    id="fullName"
+                    name="fullName"
+                    value={formik.values.fullName}
                     onChange={formik.handleChange}
                     autoFocus
                     className={classNames({
-                      "p-invalid": isFormFieldValid("name"),
+                      "p-invalid": isFormFieldValid("fullName"),
                     })}
                   />
                   <label
-                    htmlFor="name"
+                    htmlFor="fullName"
                     className={classNames({
-                      "p-error": isFormFieldValid("name"),
+                      "p-error": isFormFieldValid("fullName"),
                     })}
                   >
                     Name*
                   </label>
                 </span>
-                {getFormErrorMessage("name")}
+                {getFormErrorMessage("fullName")}
               </div>
               <div className="field">
                 <span className="p-float-label p-input-icon-right">
@@ -194,6 +194,30 @@ const Signup = () => {
                 </span>
                 {getFormErrorMessage("email")}
               </div>
+
+              <div className="field">
+                <span className="p-float-label p-input-icon-right">
+                  <i className="pi pi-envelope" />
+                  <InputText
+                    id="phone"
+                    name="phone"
+                    value={formik.values.phone}
+                    onChange={formik.handleChange}
+                    className={classNames({
+                      "p-invalid": isFormFieldValid("phone"),
+                    })}
+                  />
+                  <label
+                    htmlFor="phone"
+                    className={classNames({
+                      "p-error": isFormFieldValid("phone"),
+                    })}
+                  >
+                    Phone*
+                  </label>
+                </span>
+                {getFormErrorMessage("phone")}
+              </div>
               <div className="field">
                 <span className="p-float-label">
                   <Password
@@ -214,27 +238,6 @@ const Signup = () => {
                 </span>
                 {getFormErrorMessage("password")}
               </div>
-
-              {/* <div className="field-checkbox">
-                <Checkbox
-                  inputId="accept"
-                  name="accept"
-                  checked={formik.values.accept}
-                  onChange={formik.handleChange}
-                  className={classNames({
-                    "p-invalid": isFormFieldValid("accept"),
-                  })}
-                />
-                <label
-                  htmlFor="accept"
-                  className={classNames({
-                    "p-error": isFormFieldValid("accept"),
-                  })}
-                >
-                  I agree to the terms and conditions*
-                </label>
-              </div> */}
-
               <Button type="submit" label="Submit" className="mt-2" />
               <div className="existing-user">
                 <a

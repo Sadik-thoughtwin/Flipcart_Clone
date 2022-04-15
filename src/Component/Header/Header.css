@@ -23,14 +23,13 @@
 
 .p-button:enabled{
   border: none;
-  display: block;
+  
 }
 
 .logo {
-  height: 30px;
-  width: auto;
-  margin: 20px;
-  padding-top: 10px;
+  height:25px;
+  margin: 10px;
+  
 }
 
 .dropdown_content {
@@ -67,4 +66,9 @@
 
 .SignUp {
   padding-left: 15px;
+}
+.Explore{
+  margin-left: -102px;
+   color: white;
+   font-size: 12px;
 }

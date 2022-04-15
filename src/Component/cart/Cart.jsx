@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
 import { Badge } from "primereact/badge";
-import "./cart.css";
+import { Link } from "react-router-dom";
+import "./Cart.css";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment,removeToCart } from "../../Redux/actions/itemsAction";
+import {
+  decrement,
+  increment,
+  removeToCart,
+} from "../../Redux/actions/itemsAction";
+
 const Cart = () => {
   const [visibleRight, setVisibleRight] = useState(false);
   const allItem = useSelector((state) => state.itemReducer);
@@ -34,7 +40,7 @@ const Cart = () => {
           onHide={() => setVisibleRight(false)}
         >
           <h3>Cart List {allItem.length}</h3>
-          {allItem == ""? (
+          {allItem == "" ? (
             <div style={{ margin: "40px" }}>
               <h3>Missing Cart Items ?</h3>
               <img
@@ -57,15 +63,32 @@ const Cart = () => {
                 <h3>{single.category.type}</h3>
                 <h3>Rs:{single.price}.00</h3>
                 <h3>{single.title}</h3>
-                <button className="DecrementButton" onClick={() => decrementData(single.id)}> - </button>
+                <button
+                  className="DecrementButton"
+                  onClick={() => decrementData(single.id)}
+                >
+                  -
+                </button>
                 <span>{single.quantity}</span>
-                <button className="IncrementButton" onClick={() => incrementData(single.id)}> + </button>
-                <button className="removeData" onClick={() => removeData(single.id)}> Remove </button>
+                <button
+                  className="IncrementButton"
+                  onClick={() => incrementData(single.id)}
+                >
+                  +
+                </button>
+                <button
+                  className="removeData"
+                  onClick={() => removeData(single.id)}
+                >
+                  Remove
+                </button>
                 <hr />
               </div>
             );
           })}
+
           {allItem.length > 0 && <h3>Total:{total}.00 </h3>}
+          {allItem.length>0 && <Link className="checklist" to ="/checkout" >CheckOut</Link>}
         </Sidebar>
 
         <Button
@@ -75,7 +98,7 @@ const Cart = () => {
         >
           <i
             className="pi pi-shopping-cart mr-2 p-text-secondary p-overlay-badge icon"
-            style={{ fontSize: "1.2rem"}}
+            style={{ fontSize: "1.2rem" }}
           >
             <Badge value={allItem.length} severity="danger"></Badge>
           </i>
