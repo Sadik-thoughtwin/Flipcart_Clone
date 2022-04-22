@@ -1,0 +1,23 @@
+.error-page{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+.pagenot-found{
+   display: flex;
+   justify-content: center;
+   margin-top: 50px;
+   color: red;
+}
+.pagenot-found1{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    color: black;
+    text-decoration: none;
+}
+.header-container{
+    margin-top: -50px;
+
+}

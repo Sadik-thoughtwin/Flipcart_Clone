@@ -14,8 +14,11 @@ export const logindetails = (formValues) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     })
-    .then((result) => {
-      dispatch({ type: LOGIN_SUCCESS, payload: result.data });
+    .then( async(result) => {
+      await dispatch({ type: LOGIN_SUCCESS, payload: result.data });
+
+      localStorage.setItem("token",result.data.accToken)
+
     })
     .catch((error) => {
       dispatch({ type: LOGIN_FAILURE, payload: error });

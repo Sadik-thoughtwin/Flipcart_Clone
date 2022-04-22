@@ -7,7 +7,6 @@ import { useFormik } from "formik";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
-import { Checkbox } from "primereact/checkbox";
 import { Dialog } from "primereact/dialog";
 import { classNames } from "primereact/utils";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,17 +18,11 @@ const Signup = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
 
-  // const [signup, setSignUp] = useState(false);
-  // const [position, setPosition] = useState("center");
   const dispatch = useDispatch();
   const SignUpModal = useSelector((state) => state.signupReducer.signUpModal);
 
   const handleClick = (fullName) => {
     dispatch(signmodelopen(true));
-
-    // if (position) {
-    //   setPosition(position);
-    // }
   };
   const existingUser = () => {
     dispatch(openModel(true));
@@ -71,10 +64,10 @@ const Signup = () => {
     },
   });
 
-  const closeFooter= ()=>{
-    setShowMessage(false)
+  const closeFooter = () => {
+    setShowMessage(false);
     dispatch(signmodelopen(false));
-  }
+  };
 
   const isFormFieldValid = (name) =>
     !!(formik.touched[name] && formik.errors[name]);
@@ -98,7 +91,7 @@ const Signup = () => {
   );
 
   return (
-    <div className="form-demo">
+    <div className="form-demodetails">
       <Dialog
         visible={showMessage}
         onHide={() => setShowMessage(false)}

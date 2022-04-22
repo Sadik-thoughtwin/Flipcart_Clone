@@ -7,7 +7,7 @@ function More() {
 
   return (
     <div className="more_list">
-    <h3  className="more" icon="pi pi-external-link">More</h3>
+    <h3  className="more" icon="pi pi-external-link">More</h3>  
     <ul className="dropdownItem">
      <li><Link to ="/notification" className='seller'> Notifiacation Preferences</Link></li>
      <li><Link to ="/seller" className='seller'> Sell on Flipcart</Link></li>

@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "primereact/button";
+export const LogoutButton = () => {
 
-export function Logout() {
-  localStorage.clear();
+  const [logButton, setLogButton] = useState(true);
+  useEffect(() => {
+    setLogButton(logButton);
+  }, []);
+  const Logout = () => {
+    localStorage.clear();
+  };
+
   return (
     <div>
       <Button style={{ border: "none" }} onClick={() => Logout()}>
@@ -10,4 +17,4 @@ export function Logout() {
       </Button>
     </div>
   );
-}
+};

@@ -9,6 +9,7 @@ import {signupReducer} from './SignupReducer';
 import {signupsellerReducer} from './signupsellerReducer';
 import {loginsellerReducer} from './loginsellerReducer';
 import {AllSellerReducer } from './AllSellerReducer';
+import {DeleteProductReducer} from './DeleteProductReducer';
  const rootReducers =combineReducers({
         userReducer,
         productReducer,
@@ -19,7 +20,9 @@ import {AllSellerReducer } from './AllSellerReducer';
         signupReducer,
         signupsellerReducer,
         loginsellerReducer,
-        AllSellerReducer
+        AllSellerReducer,
+        DeleteProductReducer
+        
       })
 
 export default rootReducers;

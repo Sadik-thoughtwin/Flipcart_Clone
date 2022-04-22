@@ -1,12 +1,16 @@
+/* .checkout-main-div{
+    display: flex;
+    justify-content: center;
+} */
 .checkout-item{
-    margin-top: 10px;
     display: flex;
     flex-wrap:wrap;
     margin-bottom: 20px;
+    padding-top: 80px;
 }
 
 .all-images{
-    height: 360px;
+    height: 200px;
     width: 350px;
 }
 .descripes-details{
@@ -18,9 +22,35 @@
     }
     .check-details{
         margin-left:10px;
+        font-weight: lighter;
         
     }
-    .place-order{
-        margin-top: 20px !important;
+    .checkout-main-div>.place-order{
+        margin-left: 160vh;
         width: 200px !important;
+        background-color: #fb641b !important;
   }
+  .checkout-main-div>.payment-bill{
+    margin-left: 160vh;
+    width: 200px !important;
+   
+  }
+  div>.payment-prices1{
+    margin-left: 160vh;
+    width: 200px !important;
+  }
+ .payment-prices{
+    margin-left: 2rem;
+ }
+
+.total-price{
+    margin-left: 2rem;
+}
+
+.payment-pri{
+    margin-left: 36px;
+}
+.span-qualntity{
+    font-size: 34px;
+    font-weight: 200;
+}

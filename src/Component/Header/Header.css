@@ -11,6 +11,9 @@
   align-items: center;
   background-color: #2874f0;
   height: 60px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
 }
 .header .InputText {
   border-radius: none !important;
@@ -18,40 +21,18 @@
 .header .p-button {
   color: #2874f0;
   background-color: white;
- margin-right: 40px;
+  margin-right: 40px;
 }
 
-.p-button:enabled{
+.p-button:enabled {
   border: none;
-  
 }
 
 .logo {
-  height:25px;
+  height: 25px;
   margin: 10px;
-  
 }
 
-.dropdown_content {
-  position: absolute;
-  top: 60px;
-  width: 200px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  backface-visibility: none;
-  z-index: 999;
-  background-color: white;
-  display: none;
-}
-.dropdown_content .myprofile {
-  text-decoration: none;
-  color: black;
-}
-.dropdown_content .myprofile .myprofile_content {
-  margin-left: -65px;
-}
-.parent_LoginDiv:hover .dropdown_content {
-  display: block;
-}
 .button_margin {
   margin-left: -160px;
 }
@@ -60,15 +41,7 @@
   display: inline-block;
 }
 
-.header .parent_LoginDiv.p-button:hover .dropdown_content {
-  display: block;
-}
-
-.SignUp {
-  padding-left: 15px;
-}
-.Explore{
+.Explore {
   margin-left: -102px;
-   color: white;
-   font-size: 12px;
+  font-size: 12px;
 }

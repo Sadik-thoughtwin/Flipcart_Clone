@@ -1,7 +1,11 @@
-
+ 
+ .form-demo{
+    background-color:  #2874f0;
+    height:100vh;
+} 
 .form-demo .card {
-    display: flex;
-    justify-content: space-around ;
+    border: 2px solid blue;
+    margin-top: 20px;
     min-width: 450px;
 
 }

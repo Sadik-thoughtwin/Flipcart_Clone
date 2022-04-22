@@ -1,14 +1,16 @@
 /* moredropdown list */
 .dropdownItem {
   position: absolute;
-  margin-top: 2px;
-  display: none;
+  margin-top: 16px;
+  margin-left: 30px;
   background-color: white;
+  cursor: pointer;
+  display: none;
 }
 .dropdownItem > li {
   list-style: none;
   margin-left: -93px;
-  padding: 15px 0;
+  padding: 10px 0;
   width: 187px;
   background-color: #ffffff;
 }
@@ -22,17 +24,23 @@
   height: 25px;
   background-color: white;
   transform: rotate(44deg);
+  
 }
+.more {
+  color: white;
+  margin-top: 4px;
+}
+
 
 .more_list:hover .dropdownItem {
   display: block;
   z-index: 999;
+  transition-duration: 15s;
+  transition-delay: 20s;
+  
+
 }
 .seller {
   text-decoration: none;
   color: black;
-}
-.more {
-  color: white;
-  margin-top: 3px;
 }

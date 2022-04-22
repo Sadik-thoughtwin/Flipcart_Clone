@@ -1,0 +1,73 @@
+/* .dropdown_content{
+
+    margin-left:-50px;
+    cursor: pointer;
+}
+.dropdown_content:before{
+    content: "";
+    margin-top: -8px;
+    margin-left: -20px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    transform: rotate(44deg);
+    transition-duration: 15s;
+    cursor: pointer;
+   }
+   
+.dialog-demo .p-button {
+    margin: 0 .5rem 0 0;
+    min-width: 10rem;
+}
+
+.dialog-demo p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.dialog-demo .p-dialog .p-button {
+    min-width: 6rem;
+}
+
+.dialogBox{
+    display: flex;
+    justify-content:center
+}
+.sign-image{
+    margin-top: 100px;
+}
+
+
+.new_cutomer{
+    margin-top:20px;
+    display: flex;
+    justify-content: space-around;
+}
+.new-customer{
+    font-size: 10px;
+}
+.myprofile{
+    display: flex;
+    justify-content: space-around;
+}
+.myprofile_content{
+    margin-left: 10px;
+}
+.myprofile_content>i{
+    color: #2874F0;
+}
+.Flipcartplus{
+    color: #2874F0;
+    padding-left:30px;
+}
+.existing-user{
+    margin-top: 20px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.existingUser{
+    text-decoration:none;
+    color:#2874f0;
+} */

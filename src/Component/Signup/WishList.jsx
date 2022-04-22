@@ -1,13 +1,14 @@
 import Signup from "./Signup";
-import { Logout } from "../../Component/Logout/Logout";
+import { LogoutButton } from "../../Component/Logout/Logout";
 import "./Signup.css";
+import "./WishList.css";
+
 function WishList() {
   return (
     <div className="dropdown_content">
       <div className="new_cutomer">
         <span className="new-customer">New Customer?</span>
-        <span style={{ marginLeft: "5px" }}>
-          {" "}
+        <span className="signup-button">
           <Signup />
         </span>
       </div>
@@ -41,7 +42,10 @@ function WishList() {
           <span style={{ marginLeft: "10px" }}>Rewards</span>
         </h6>
       </div>
-      <Logout />
+
+      <div className="myprofile">
+        <span>{localStorage.getItem("token") && <LogoutButton />}</span>
+      </div>
     </div>
   );
 }

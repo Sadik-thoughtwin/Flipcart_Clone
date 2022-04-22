@@ -1,63 +1,59 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Dashboard } from "../Dashboard";
 import { FileUpload } from "primereact/fileupload";
 import "./AddProduct.css";
 import { Formik } from "formik";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
+import { addproduct } from "../../Redux/actions/AddProductAction";
+import { useDispatch } from "react-redux";
 export function AddProduct() {
+ const dispatch =useDispatch()
  
+//  console.log("kkkkk>>>>>",localStorage.getItem("Admin-token"))
+ useEffect(()=>{
+  localStorage.getItem("Admin-token")
+  
+ },[])
 
   const initialValues = {
-    productName: "",
-    productDetails: "",
-    categotyId: "",
+    categoryId: "",
     brandId: "",
-    productPrice: "",
-    image: "",
+    price: "",
+    title:"",
+    avatar: "",
   };
   const onSubmit = (values, submitProps) => {
-    console.log("Form data", values);
+    dispatch(addproduct(values))
     submitProps.resetForm()
+    console.log("form values",values)
   };
 
   const validate = (values) => {
     let errors = {};
-    if (!values.productName) {
-      errors.productName = "Product Name is required";
-    }
-    if (!values.productDetails) {
-      errors.productDetails = "product_Details is required";
-    }
-    if (!values.categotyId) {
-      errors.categotyId = "categoty_Id is required";
+  
+    if (!values.categoryId) {
+      errors.categoryId = "categoty_Id is required";
     }
     if (!values.brandId) {
       errors.brandId = "brand_Id is required";
     }
-    if (!values.productPrice) {
-      errors.productPrice = "product_Price is required";
+    if (!values.price) {
+      errors.price = "product_Price is required";
     }
-    if (!values.image) {
-      errors.image = "image is required";
+    if (!values.avatar) {
+      errors.avatar = "avatar is required";
     }
     
     return errors;
   };
-  // const validationSchema = Yup.object({
-  //   productName:Yup.string().required('Requred'),
-  //   productDetails:Yup.string().required('Required'),
-  //   categotyId:Yup.string().required('Required'),
-  //   brandId:Yup.string().required('Required'),
-  //   productPrice:Yup.string().required('Required'),
-  //   image:Yup.string().required('Required'),
-  // })
+
   const formik = useFormik({
     initialValues,
     onSubmit,
     validate,
   });
-  console.log("Visited ",formik.touched)
+  
   return (
     <>
       <Dashboard />
@@ -71,56 +67,27 @@ export function AddProduct() {
         <h3>Add New Products</h3>
         <div>
           <form onSubmit={formik.handleSubmit} className="form-details">
-            <div className="form-control">
-            <label htmlFor="productName">Product Name:</label>
-          
-            <input
-              type="text"
-              id="productName"
-              name="productName"
-              placeholder=" Product Name"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.productName}
-            />
-            {formik.touched.productName && formik.errors.productName? <div className="product-name">{formik.errors.productName}</div>:null}
-            </div>
-           
-              <div className="form-control">
-            <label htmlFor="productDetails"> Enter Product Details: </label>
-            <br />
-            <input
-              type="text"
-              id="productDetails"
-              name="productDetails"
-              placeholder=" Enter Product Details"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.productDetails}
-            />
-             {formik.touched.productDetails && formik.errors.productDetails? <div className="product-name">{formik.errors.productDetails}</div>:null}
-             </div>
             
-            <div className="form-control">
-            <label htmlFor="categotyId"> Enter Category ID: </label>
+             <div className="form-control">
+            <label htmlFor="categoryId"> Enter Category ID: </label>
             <br />
             <input
-              type="number"
-              id="categotyId"
-              name="categotyId"
+              type="text"
+              id="categoryId"
+              name="categoryId"
               placeholder=" Enter Category ID"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.productcategotyIdName}
+              value={formik.values.categoryId}
             />
-             { formik.touched.categotyId && formik.errors.categotyId? <div className="product-name">{formik.errors.categotyId}</div>:null}
+             { formik.touched.categoryId && formik.errors.categoryId? <div className="product-name">{formik.errors.categoryId}</div>:null}
              </div>
            
             <div className="form-control">
             <label htmlFor="brandId"> Enter Brand ID: </label>
            
             <input
-              type="number"
+              type="text"
               id="brandId"
               name="brandId"
               placeholder="Enter Brand ID"
@@ -132,32 +99,49 @@ export function AddProduct() {
              </div>
           
             <div className="form-control">
-            <label htmlFor="productPrice"> Enter Product Price: </label>
+            <label htmlFor="price"> Enter Product Price: </label>
         
             <input
               type="number"
-              id="productPrice"
-              name="productPrice"
+              id="price"
+              name="price"
               placeholder=" Enter Product Price"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.productPrice}
+              value={formik.values.price}
             />
-             {formik.touched.productPrice &&  formik.errors.productPrice? <div className="product-name">{formik.errors.productPrice}</div>:null}
+             {formik.touched.price &&  formik.errors.price? <div className="product-name">{formik.errors.price}</div>:null}
+             </div>
+
+
+             {/* title */}
+             <div className="form-control">
+            <label htmlFor="title"> Enter Product title: </label>
+        
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder=" Enter Product Price"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.title}
+            />
+             {formik.touched.title &&  formik.errors.title? <div className="product-name">{formik.errors.title}</div>:null}
              </div>
           
             <div className="form-control">
-            <label htmlFor="image"> Product Image: </label>
+            <label htmlFor="avatar"> Product Avatar: </label>
            
             <input
               type="file"
-              id="image"
-              name="image"
+              id="avatar"
+              name="avatar"
               onChange={formik.handleChange}
                onBlur={formik.handleBlur}
-              value={formik.values.image}
+              value={formik.values.avatar}
             />
-             {formik.touched.image &&  formik.errors.image? <div className="product-name">{formik.errors.image}</div>:null}
+             {formik.touched.avatar &&  formik.errors.avatar? <div className="product-name">{formik.errors.avatar}</div>:null}
              </div>
            
             <button className="submit-button" type="submit">Submit</button>

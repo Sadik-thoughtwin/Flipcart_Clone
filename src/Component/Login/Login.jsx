@@ -12,16 +12,14 @@ import { openModel } from "../../Redux/actions/userAction";
 function Login() {
   const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState({});
-  // const [isSubmit, setIsSubmit] = useState(false);
-  const [showMessages,setShowMessages] = useState(false)
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [showMessages, setShowMessages] = useState(false);
   const dispatch = useDispatch();
-  const signdetails = useSelector((state) => state.signupReducer);
-  const loginDetails1 = useSelector((login) => login?.loginReducer?.success);
-  // console.log("object",loginDetails1)
-  // useEffect(() => {
-  //   if (Object.keys(formError).length === 0 && isSubmit) {
-  //   }
-  // }, [formError]);
+  const loginDetails = useSelector((state) => state.loginReducer);
+useEffect(() => {
+    if (Object.keys(formError).length === 0 && isSubmit) {
+    }
+  }, [formError]);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -34,11 +32,11 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setIsSubmit(true);
+    setIsSubmit(true);
     setFormError(validate(formValues));
     dispatch(logindetails(formValues));
     dispatch(openModel(false));
-    setShowMessages(true)
+     setShowMessages(true);
   };
 
   const validate = (values) => {
@@ -48,8 +46,7 @@ function Login() {
       errors.email = "Email is required";
     } else if (!regex.test(values.email)) {
       errors.email = "This is not valid email format";
-      console.log("email", values.email);
-    }
+      }
     if (!values.password) {
       errors.password = "Pasword is required";
     } else if (values.password.length < 4) {
@@ -71,35 +68,34 @@ function Login() {
       />
     </div>
   );
-  const checkOut = () =>{
-    
-  }
 
   return (
     <div className="Login_div">
       <div>
         <Dialog
-        visible={showMessages}
-        onHide={() => setShowMessages(true)}
-        position="top"
-        footer={dialogFooters}
-        showHeader={false}
-        breakpoints={{ "960px": "80vw" }}
-        style={{ width: "30vw" }}
-      >
-        <div className="flex align-items-center flex-column pt-6 px-3">
-          <i
-            className="pi pi-check-circle"
-            style={{ fontSize: "5rem", color: "var(--green-500)" }}
-          ></i>
-          <h5>Registration!</h5>
-          <p style={{ lineHeight: 1.5, textIndent: "1rem" }}>
-            Your account is registered under fullName <b>{formValues.fullName}</b>
-            <br /> Your Email is:<b>{formValues.email}</b>
-          </p>
-     </div>
-      </Dialog>
-        </div>
+          visible={showMessages}
+          onHide={() => setShowMessages(false)}
+          position="top"
+          footer={dialogFooters}
+          showHeader={false}
+          breakpoints={{ "960px": "80vw" }}
+          style={{ width: "30vw" }}
+        >
+          <div className="flex align-items-center flex-column pt-6 px-3">
+            <i
+              className="pi pi-check-circle"
+              style={{ fontSize: "5rem", color: "var(--green-500)" }}
+            ></i>
+            <h5>Registration!</h5>
+            <h3>{logindetails.message}</h3>
+            <p style={{ lineHeight: 1.5, textIndent: "1rem" }}>
+              Your account is registered under fullName
+              <b>{formValues.fullName}</b>
+              <br /> Your Email is:<b>{formValues.email}</b>
+            </p>
+          </div>
+        </Dialog>
+      </div>
       <div className="Image_div">
         <h4 className="textItem">
           Get access to your
@@ -117,7 +113,9 @@ function Login() {
         />
       </div>
       {/* {Object.keys(formError).length === 0 && isSubmit ? (
-        <div style={{ color: "red", marginRight: "50px" }}>{loginDetails1}</div>
+        <div style={{ color: "red", marginRight: "50px" }}>
+          {loginDetails.message}
+        </div>
       ) : (
         ""
       )} */}

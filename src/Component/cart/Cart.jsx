@@ -88,8 +88,8 @@ const Cart = () => {
           })}
 
           {allItem.length > 0 && <h3>Total:{total}.00 </h3>}
-          {allItem.length>0 && <Link className="checklist" to ="/checkout" >CheckOut</Link>}
-        </Sidebar>
+          {allItem.length>0 && <Link className="checklist" to ="/checkout" ><Button>CheckOut</Button></Link>}
+          </Sidebar>
 
         <Button
           label="Cart"

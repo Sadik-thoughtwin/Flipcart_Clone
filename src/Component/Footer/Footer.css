@@ -1,0 +1,17 @@
+.footer{
+    background-color: black;
+    /* height: 100px; */
+}
+.footer-div{
+    margin-top:20px;
+    padding-top: 35px;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+a{
+    color: white;
+}
+p{
+    font-size: 10px;
+}

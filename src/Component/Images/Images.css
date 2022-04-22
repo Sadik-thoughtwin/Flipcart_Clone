@@ -9,6 +9,7 @@
     -moz-box-shadow: 10px 20px 23px -8px rgba(231, 220, 220, 0.75);
     box-shadow: 10px 20px 23px -8px rgba(211, 204, 204, 0.75);
     text-decoration: none;
+    padding-top: 75px;
     
  }
  .child_div{
