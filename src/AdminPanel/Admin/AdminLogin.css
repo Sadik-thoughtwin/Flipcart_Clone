@@ -1,0 +1,22 @@
+.dialog-footer {
+  display: flex;
+  justify-content: center;
+}
+/* .ok-button{
+    p-button-text;
+} */
+
+.admin-card {
+  margin-top: 50px;
+}
+.admin-loginpopup {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10px;
+  padding: 0 3px;
+}
+.admin-card {
+  display: flex;
+  justify-content: center;
+}

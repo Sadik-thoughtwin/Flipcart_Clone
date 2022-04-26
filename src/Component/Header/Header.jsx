@@ -18,6 +18,7 @@ export const Header = () => {
     (state) => state?.userReducer.loginModal
   );
   const loginDetails = useSelector((state) => state?.loginReducer);
+  console.log(">>>>>>>>>>",loginDetails)
   const token = loginDetails?.success?.accToken;
   const dispatch = useDispatch();
 
@@ -32,13 +33,14 @@ export const Header = () => {
     <div>
       <header className="header">
         <div>
-          <img
-            className="logo"
-            src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png"
-            alt="logo"
-          />
-          <Link to="/" className="Explore">
-            Explore Plus
+          <Link to="/">
+            <img
+              className="logo"
+              src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png"
+              alt="logo"
+            />
+
+            <div className="Explore">Explore Plus</div>
           </Link>
         </div>
 
@@ -48,8 +50,8 @@ export const Header = () => {
         />
 
         <div className="parent_LoginDiv button_margin">
-          {token ? (
-            <h3 style={{ color: "white" }}>
+          {token? (
+            <h3 style={{ color: "white" ,marginTop:"20px"}}>
               {loginDetails?.success?.name.charAt(0).toUpperCase() +
                 loginDetails?.success?.name.slice(1)}
             </h3>
@@ -62,8 +64,7 @@ export const Header = () => {
               }}
             />
           )}
-             <WishList />
-          {/* {localStorage.getItem("token") ? <List /> : <WishList />} */}
+          <WishList />
         </div>
 
         <Dialog

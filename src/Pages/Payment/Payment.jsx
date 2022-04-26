@@ -1,37 +1,28 @@
 import React, { useRef } from "react"
 import Checkout from "react-stripe-checkout"
+import { CLIENT_SECRET_KEY } from "../../config/env.config"
 
-export const Payment = ()=> {
+
+export const Payment = ({length,amount})=> {
   const time = useRef(0)
   const timer = useRef(null)
 
-  // function onToken(token) {
-  //   clearInterval(timer.current)
-  //   alert(`Time to fill out form: ${time.current / 1000} seconds`)
-  //   time.current = 0
-  // }
-
-  // function onOpened() {
-  //   timer.current = setInterval(() => {
-  //     time.current += 1000
-  //   }, 1000)
-  // }
+ 
 
   return (
     <div className="Payment">
       <Checkout
-         name="Flipcart"
-        description="Place your Order"
+        name="Flipcart"
+        description={`Place your Order,${length},Items`}
         label="Place Order"
         panelLabel="Pay"
         email="already-know-flipcart@email.com"
-        amount={1000000}
+        amount={amount}
         currency="USD"
         shippingAddress
         billingAddress
-        stripeKey="pk_test_P7PboXILJ38t21Eq4S9rw0Uq"
-        // token={onToken}
-        // opened={onOpened}
+        stripeKey={`${CLIENT_SECRET_KEY}`}
+       
       />
     </div>
   )

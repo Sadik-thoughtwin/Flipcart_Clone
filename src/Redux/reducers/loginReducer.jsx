@@ -6,11 +6,10 @@ import {
 const initialState = {
   loading: false,
   error: "",
-  success:"",
+  success: "",
 };
 
 export const loginReducer = (state = initialState, action) => {
-    
   switch (action.type) {
     case LOGIN_REQUEST:
       return {
@@ -18,16 +17,17 @@ export const loginReducer = (state = initialState, action) => {
         loading: true,
       };
     case LOGIN_SUCCESS:
-       return  { ...state,
-            loading:true,
-            success: action.payload,
-      }
+      return { ...state, loading: true, success: action.payload };
     case LOGIN_FAILURE:
-    return {
+      return {
         loading: false,
         error: action.payload,
       };
-
+    case "logout":
+      return {
+        ...state,
+        success: "",
+      };
     default:
       return state;
   }

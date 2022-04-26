@@ -11,6 +11,7 @@ function More() {
     <ul className="dropdownItem">
      <li><Link to ="/notification" className='seller'> Notifiacation Preferences</Link></li>
      <li><Link to ="/seller" className='seller'> Sell on Flipcart</Link></li>
+     <li><Link to ="/admin" className='seller'> Admin</Link></li>
      <li><Link to ="/customer" className='seller'> 24*7 Customer care</Link></li>
      <li><Link to ="/advertise" className='seller'> Advertise</Link></li>
      <li><Link to ="/notification" className='seller'>Download App</Link></li>

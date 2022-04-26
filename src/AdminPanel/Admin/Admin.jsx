@@ -3,55 +3,55 @@ import { useFormik } from "formik";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
-import { Dialog } from "primereact/dialog";
 import { classNames } from "primereact/utils";
-import { loginsellerAction } from "../../Redux/actions/loginsellerAction";
+import { Dialog } from "primereact/dialog";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import Sellerheader from "./Sellerheader";
+import AdminHeader from "./AdminHeader";
 import { useNavigate } from "react-router";
-import "./SellerLogin.css";
+import "./AdminLogin.css";
+import { AdminLoginAction } from "../../Redux/actions/AdminLoginAction";
 
-export const SellerLogin = () => {
+export const Admin = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
-  const [getError, setGetError] = useState("");
-  const dispatch = useDispatch();
-  const loginSuccess = useSelector((state) => state.loginsellerReducer);
-  console.log("loginSuccess", loginSuccess.getSuccess);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const selector = useSelector((state) =>state.AdminReducer.loading);
+  useEffect(() => {
+    if(localStorage.getItem("Admin-token")) {
+      navigate("/sellerlist");
+    } else {
+      navigate("/admin");
+    }
+  }, [selector]);
 
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    validate: (data) => {
+    validate: (formvalues) => {
       let errors = {};
 
-      if (!data.email) {
+      if (!formvalues.email) {
         errors.email = "Email is required.";
       } else if (
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formvalues.email)
       ) {
         errors.email = "Invalid email address. E.g. example@email.com";
       }
 
-      if (!data.password) {
+      if (!formvalues.password) {
         errors.password = "Password is required.";
       }
 
       return errors;
     },
-    onSubmit: (data) => {
-      setFormData(data);
-      setShowMessage(true);
+    onSubmit: (formvalues) => {
+      setFormData(formvalues);
       formik.resetForm();
-        dispatch(loginsellerAction(data))
-        navigate("/productlist");
-     
-
-      setGetError(loginSuccess.getRequest);
+      setShowMessage(true);
+      dispatch(AdminLoginAction(formvalues));
     },
   });
 
@@ -66,7 +66,7 @@ export const SellerLogin = () => {
   };
 
   const dialogFooter = (
-    <div className="flex justify-content-center">
+    <div className="dialog-footer">
       <Button
         label="OK"
         className="p-button-text"
@@ -77,8 +77,8 @@ export const SellerLogin = () => {
   );
 
   return (
-    <div className="form-demo">
-      <Sellerheader />
+    <div className="form-demo1">
+      <AdminHeader />
       <Dialog
         visible={showMessage}
         onHide={() => setShowMessage(false)}
@@ -88,24 +88,22 @@ export const SellerLogin = () => {
         breakpoints={{ "960px": "80vw" }}
         style={{ width: "30vw" }}
       >
-        <div className="flex align-items-center flex-column pt-6 px-3">
+        <div className="admin-loginpopup">
           <i
             className="pi pi-check-circle"
             style={{ fontSize: "5rem", color: "var(--green-500)" }}
           ></i>
-          <h5>{loginSuccess?.getSuccess?.data?.message}</h5>
+
           <p style={{ lineHeight: 1.5, textIndent: "1rem" }}>
-            Your account is registered under name <b>{formData.name}</b> ; it'll
-            be valid next 30 days without activation. Please check
+            Your account is Logined under name <b>{formData.name}</b> ; it'll be
+            <span>{selector?.message}</span>
             <b>{formData.email}</b> for activation instructions.
           </p>
         </div>
       </Dialog>
 
-      <div className="flex justify-content-center">
+      <div className="admin-card">
         <div className="card">
-          <h3>{getError}</h3>
-          <img src="./image/slr.png" width="500px" alt="sellerLogin" />
           <form onSubmit={formik.handleSubmit} className="p-fluid">
             <div className="field">
               <span className="p-float-label p-input-icon-right">
@@ -155,9 +153,6 @@ export const SellerLogin = () => {
             </div>
 
             <Button type="submit" label="Submit" className="mt-2" />
-            <Link to="/sellersign" className="seller-signup">
-              Signup
-            </Link>
           </form>
         </div>
       </div>

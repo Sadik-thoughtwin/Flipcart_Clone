@@ -5,5 +5,4 @@ function Sellerheader() {
     <div className='seller-header'>Seller Account</div>
   )
 }
-
 export default Sellerheader

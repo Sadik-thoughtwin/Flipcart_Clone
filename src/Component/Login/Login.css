@@ -20,6 +20,7 @@
   color: #ffffff;
 }
 .textItem {
+  padding-top: 25px;
   text-align: center;
 }
 div.inputField_div .loginField {

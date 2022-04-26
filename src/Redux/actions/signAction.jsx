@@ -7,7 +7,7 @@ export const signupdetail = (data) => async (dispatch) => {
   dispatch({ type: SIGN_REQUEST, payload: true });
 
   await axios
-    .post(`${API_BASE_URL}/auth/user/register`, data)
+    .post(`${API_BASE_URL}/v1/user/register`, data)
     .then((responce) => {
       dispatch({ type: SIGN_SUCCESS, payload: responce.data });
     })

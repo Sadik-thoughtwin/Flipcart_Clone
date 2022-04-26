@@ -127,7 +127,7 @@ const Signup = () => {
         onHide={() => dispatch(signmodelopen(false))}
         dismissableMask={true}
       >
-        <div className="flex justify-content-around main-div">
+        <div className="sign-uppage">
           <div>
             <h4>Get access to your</h4>
             <br />

@@ -4,14 +4,19 @@
   width: 100%;
   position: fixed;
 }
-.admin-dash{
+.admin-dash {
   color: white;
-   text-align :center;
-   padding-top: 30px;
-   margin-left:137px ;
-   font-size: 25px;
+  text-align: center;
+  padding-top: 30px;
+  margin-left: 137px;
+  font-size: 25px;
 }
 .p-input-icon-left > .p-inputtext {
   height: 38px;
   margin-top: 10px;
+}
+.admin-logout{
+ margin-left: 1403px;
+ margin-top:-30px;
+ font-size: 20px;
 }

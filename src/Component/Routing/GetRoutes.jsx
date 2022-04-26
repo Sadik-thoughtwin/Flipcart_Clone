@@ -1,3 +1,4 @@
+import React, { useState, Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "../../App";
 import Notification from "../More/Notification";
@@ -15,45 +16,48 @@ import { AddProduct } from "../../AdminPanel/AddProduct/AddProduct";
 import Checkout from "../../Pages/Checkout/Checkout";
 import { PageNotFound } from "../../Pages/PageNotFound/PageNotFound";
 import { PrivateRoute } from "../../Pages/PrivateRoute/PrivateRoute";
-import { Payment } from "../../Pages/Payment/Payment";
+import {Admin} from '../../AdminPanel/Admin/Admin';
+// import { ProgressSpinner } from "primereact/progressspinner";
+
 function GetRoutes() {
+
   const PublicRoutes = [
-   
     { path: "/", Component: App },
     { path: "/header", Component: Header },
     { path: "*", Component: PageNotFound },
     { path: "/signup", Component: Signup },
     { path: "/details", Component: Details },
-    {path:"/payment",Component:Payment}
-   
+    { path: "/seller", Component: Seller },
+    { path: "/sellersign", Component: Seller },
+    { path: "/sellerlogin", Component: SellerLogin },
+    { path: "/sellerlist", Component: SellerList },
+    { path: "/productlist", Component: ProductList },
+    { path: "/add", Component: AddProduct },
+    { path: "/dashboard", Component: ChartLine },
+    { path: "/dash", Component: Dashboard },
+    { path: "/userlist", Component: UserList },
+    { path: "/dash", Component: Dashboard },
+    {path: "/admin", Component:Admin}
   ];
 
   const PrivateRoutes = [
     { path: "/notification", Component: Notification },
     { path: "/checkout", Component: Checkout },
-    { path: "/userlist", Component: UserList },
-    { path: "/dash", Component: Dashboard },
-    { path: "/dashboard", Component: ChartLine },
-    { path: "/seller", Component: Seller },
-    { path: "/sellersign", Component: Seller },
-    { path: "/sellerlogin", Component: SellerLogin },
-    { path: "/sellerlist", Component: SellerList },
-    { path: "/productlist", Component: ProductList },
-    { path: "/add", Component: AddProduct },
-    { path: "/userlist", Component: UserList },
-    { path: "/dash", Component: Dashboard },
-    { path: "/dashboard", Component: ChartLine },
-    { path: "/seller", Component: Seller },
-    { path: "/sellersign", Component: Seller },
-    { path: "/sellerlogin", Component: SellerLogin },
-    { path: "/sellerlist", Component: SellerList },
-    { path: "/productlist", Component: ProductList },
-    { path: "/add", Component: AddProduct },
   ];
 
   return (
     <>
       <BrowserRouter>
+        {/* <Suspense
+          fallback={
+            <ProgressSpinner
+              style={{ width: "50px", height: "50px" }}
+              strokeWidth="8"
+              fill="var(--surface-ground)"
+              animationDuration=".5s"
+            />
+          }
+        /> */}
         <Routes>
           {PublicRoutes?.map((item, index) => {
             return (

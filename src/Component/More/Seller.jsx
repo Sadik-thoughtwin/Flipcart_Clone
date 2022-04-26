@@ -186,7 +186,8 @@ const Seller = () => {
                   name="phone"
                   value={formik.values.phone}
                    onChange={formik.handleChange}
-                  className={classNames({
+                   placeholder="Mobile number"
+                    className={classNames({
                     "p-invalid": isFormFieldValid("phone"),
                   })}
                 />
@@ -196,7 +197,7 @@ const Seller = () => {
                     "p-error": isFormFieldValid("phone"),
                   })}
                 >
-                  phone*
+                
                 </label>
               </span>
               {getFormErrorMessage("phone")}
@@ -232,7 +233,6 @@ const Seller = () => {
          
           <Link to ="/sellerlogin" className="existing-seller" >existing user Login</Link>
           </form>
-          <img src="image/seller.png" alt="seller"/>
         </div>
       </div>
      

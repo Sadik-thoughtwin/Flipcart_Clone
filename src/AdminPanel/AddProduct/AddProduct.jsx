@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 export function AddProduct() {
  const dispatch =useDispatch()
  
-//  console.log("kkkkk>>>>>",localStorage.getItem("Admin-token"))
+
  useEffect(()=>{
   localStorage.getItem("Admin-token")
   
@@ -67,6 +67,21 @@ export function AddProduct() {
         <h3>Add New Products</h3>
         <div>
           <form onSubmit={formik.handleSubmit} className="form-details">
+             {/* title */}
+             <div className="form-control">
+            <label htmlFor="title"> Enter Product title: </label>
+        
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder=" Enter Product Price"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.title}
+            />
+             {formik.touched.title &&  formik.errors.title? <div className="product-name">{formik.errors.title}</div>:null}
+             </div>
             
              <div className="form-control">
             <label htmlFor="categoryId"> Enter Category ID: </label>
@@ -113,24 +128,7 @@ export function AddProduct() {
              {formik.touched.price &&  formik.errors.price? <div className="product-name">{formik.errors.price}</div>:null}
              </div>
 
-
-             {/* title */}
-             <div className="form-control">
-            <label htmlFor="title"> Enter Product title: </label>
-        
-            <input
-              type="text"
-              id="title"
-              name="title"
-              placeholder=" Enter Product Price"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.title}
-            />
-             {formik.touched.title &&  formik.errors.title? <div className="product-name">{formik.errors.title}</div>:null}
-             </div>
-          
-            <div className="form-control">
+           <div className="form-control">
             <label htmlFor="avatar"> Product Avatar: </label>
            
             <input

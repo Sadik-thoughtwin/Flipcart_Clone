@@ -17,8 +17,10 @@ function Login() {
   const dispatch = useDispatch();
   const loginDetails = useSelector((state) => state.loginReducer);
 useEffect(() => {
+
     if (Object.keys(formError).length === 0 && isSubmit) {
     }
+    
   }, [formError]);
 
   const handleInput = (e) => {
@@ -34,9 +36,11 @@ useEffect(() => {
     e.preventDefault();
     setIsSubmit(true);
     setFormError(validate(formValues));
+   dispatch(openModel(false));
+      setShowMessages(true);
     dispatch(logindetails(formValues));
-    dispatch(openModel(false));
-     setShowMessages(true);
+   
+    
   };
 
   const validate = (values) => {

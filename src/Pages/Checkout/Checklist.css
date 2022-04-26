@@ -2,55 +2,89 @@
     display: flex;
     justify-content: center;
 } */
-.checkout-item{
-    display: flex;
-    flex-wrap:wrap;
-    margin-bottom: 20px;
-    padding-top: 80px;
-}
 
-.all-images{
-    height: 200px;
-    width: 350px;
-}
-.descripes-details{
+.main-div{
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
-    margin-left:20px;
-    padding-top: 10px;
-    }
-    .check-details{
-        margin-left:10px;
-        font-weight: lighter;
-        
-    }
-    .checkout-main-div>.place-order{
-        margin-left: 160vh;
-        width: 200px !important;
-        background-color: #fb641b !important;
-  }
-  .checkout-main-div>.payment-bill{
-    margin-left: 160vh;
-    width: 200px !important;
-   
-  }
-  div>.payment-prices1{
-    margin-left: 160vh;
-    width: 200px !important;
-  }
- .payment-prices{
-    margin-left: 2rem;
- }
-
-.total-price{
-    margin-left: 2rem;
+    /* justify-content: space-around;
+    flex-wrap: wrap; */
+}
+.checkout-item {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* margin-bottom: 20px;
+  padding-top: 80px;
+  margin-left: 50px; */
 }
 
-.payment-pri{
-    margin-left: 36px;
+.all-images {
+  height: 200px;
+  width: 230px;
 }
-.span-qualntity{
-    font-size: 34px;
-    font-weight: 200;
+.descripes-details {
+  /* display: flex;
+  flex-direction: column; */
+  margin-top: 10px;
+  margin-left: 20px;
+  padding-top: 10px;
+}
+.check-details {
+  margin-left: 10px;
+  font-weight: lighter;
+}
+.checkout-main-div > .place-order {
+  margin-left: 160vh;
+  width: 200px !important;
+  background-color: #fb641b !important;
+}
+.payment-bill {
+  box-shadow: 3px 3px 23px 12px rgba(0,0,0,0.87);
+
+    text-align: center;
+    /* border:2px solid black; */
+    height: 250px;
+    margin-right: 50px;
+  width: 250px !important;
+}
+.bill-details{
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+div > .payment-prices1 {
+  /* margin-left: 50vh;  */
+  margin-top: 40px;
+  width: 200px !important;
+}
+
+.total-amount {
+    /* margin-left: 400px;   */
+    border-bottom: 1px solid black !important;
+  }
+  
+.payment-prices {
+  margin-left: 2rem;
+}
+
+/* .payment-bill > .total-price {
+  margin-left: 2rem;
+} */
+
+.total-amt {
+    margin-left: 3vh;
+}
+.span-qualntity {
+  font-size: 34px;
+  font-weight: 200;
+}
+
+
+.item-list{
+    display: flex;
+    justify-content: space-between;
+
+}
+.indre-decrement{
+margin-top: 20px;
+margin-bottom: 20px;
 }
