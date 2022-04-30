@@ -5,6 +5,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
 } from "../Constant/constant";
+import { openModel } from "./userAction";
 
 export const logindetails = (formValues) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST, payload: true });
@@ -14,18 +15,17 @@ export const logindetails = (formValues) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     })
-    .then( async(result) => {
+    .then(async (result) => {
       await dispatch({ type: LOGIN_SUCCESS, payload: result.data });
-      console.log("result----",result)
-      localStorage.setItem("token",result.data.accToken)
-
+      dispatch(openModel(false));
+      localStorage.setItem("token", result.data.accToken);
     })
     .catch((error) => {
-     dispatch({ type: LOGIN_FAILURE, payload: error.message });
+      dispatch({ type: LOGIN_FAILURE, payload: error.response.data });
     });
 };
 
-export const logOut = () => async(dispatch) => {
-  localStorage.clear()
-  dispatch({type: "logout"})
-}
+export const logOut = () => async (dispatch) => {
+  localStorage.clear();
+  dispatch({ type: "logout" });
+};

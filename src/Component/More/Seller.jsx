@@ -14,7 +14,7 @@ import Sellerheader from "./Sellerheader";
 import { useNavigate } from "react-router-dom";
 
 const Seller = () => {
-  const [showMessage, setShowMessage] = useState(false);
+  const [showMessage2, setShowMessage2] = useState(false);
   const [formgetData, setFormgetData] = useState({});
   const dispatch = useDispatch();
   const navigate =useNavigate()
@@ -60,7 +60,7 @@ const Seller = () => {
     },
     onSubmit: (getdata) => {
       setFormgetData(getdata);
-      setShowMessage(true);
+      setShowMessage2(true);
       formik.resetForm();
       dispatch(signupsellerAction(getdata));
       navigate('/sellerlogin')
@@ -84,7 +84,7 @@ const Seller = () => {
         label="OK"
         className="p-button-text"
         autoFocus
-        onClick={() => setShowMessage(false)}
+        onClick={() => setShowMessage2(false)}
       />
     </div>
   );
@@ -107,8 +107,8 @@ const Seller = () => {
       <Sellerheader />
       <h2 style={{color:"white"}}>Seller Registration</h2>
      <Dialog
-        visible={showMessage}
-        onHide={() => setShowMessage(false)}
+        visible={showMessage2}
+        onHide={() => setShowMessage2(false)}
         position="top"
         footer={dialogFooter}
         showHeader={false}

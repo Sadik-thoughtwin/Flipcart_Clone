@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
-import { Dialog } from "primereact/dialog";
+import { Toast } from "primereact/toast";
 import { useSelector, useDispatch } from "react-redux";
 import "./Login.css";
 import { logindetails } from "../../Redux/actions/loginAction";
@@ -13,14 +13,17 @@ function Login() {
   const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const [showMessages, setShowMessages] = useState(false);
+  const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const toast = useRef(null);
   const dispatch = useDispatch();
-  const loginDetails = useSelector((state) => state.loginReducer);
-useEffect(() => {
-
+  const loginDetails = useSelector((state) => state?.loginReducer);
+  console.log("loginDetails", loginDetails);
+  useEffect(() => {
     if (Object.keys(formError).length === 0 && isSubmit) {
     }
-    
+    setMessage(loginDetails?.success?.message);
+    setErrorMessage(loginDetails?.error?.message);
   }, [formError]);
 
   const handleInput = (e) => {
@@ -36,11 +39,8 @@ useEffect(() => {
     e.preventDefault();
     setIsSubmit(true);
     setFormError(validate(formValues));
-   dispatch(openModel(false));
-      setShowMessages(true);
     dispatch(logindetails(formValues));
-   
-    
+    showSuccess();
   };
 
   const validate = (values) => {
@@ -50,7 +50,7 @@ useEffect(() => {
       errors.email = "Email is required";
     } else if (!regex.test(values.email)) {
       errors.email = "This is not valid email format";
-      }
+    }
     if (!values.password) {
       errors.password = "Pasword is required";
     } else if (values.password.length < 4) {
@@ -62,44 +62,17 @@ useEffect(() => {
     }
     return errors;
   };
-  const dialogFooters = (
-    <div className="flex justify-content-center">
-      <Button
-        label="OK"
-        className="p-button-text"
-        autoFocus
-        onClick={() => setShowMessages(false)}
-      />
-    </div>
-  );
-
+  const showSuccess = () => {
+    toast.current.show({
+      severity: "success",
+      summary: "Success Message",
+      detail: errorMessage,
+      life: 3000,
+    });
+  };
   return (
     <div className="Login_div">
-      <div>
-        <Dialog
-          visible={showMessages}
-          onHide={() => setShowMessages(false)}
-          position="top"
-          footer={dialogFooters}
-          showHeader={false}
-          breakpoints={{ "960px": "80vw" }}
-          style={{ width: "30vw" }}
-        >
-          <div className="flex align-items-center flex-column pt-6 px-3">
-            <i
-              className="pi pi-check-circle"
-              style={{ fontSize: "5rem", color: "var(--green-500)" }}
-            ></i>
-            <h5>Registration!</h5>
-            <h3>{logindetails.message}</h3>
-            <p style={{ lineHeight: 1.5, textIndent: "1rem" }}>
-              Your account is registered under fullName
-              <b>{formValues.fullName}</b>
-              <br /> Your Email is:<b>{formValues.email}</b>
-            </p>
-          </div>
-        </Dialog>
-      </div>
+      <Toast ref={toast} />
       <div className="Image_div">
         <h4 className="textItem">
           Get access to your
@@ -118,7 +91,7 @@ useEffect(() => {
       </div>
       {/* {Object.keys(formError).length === 0 && isSubmit ? (
         <div style={{ color: "red", marginRight: "50px" }}>
-          {loginDetails.message}
+          {loginDetails?.data?.message}
         </div>
       ) : (
         ""

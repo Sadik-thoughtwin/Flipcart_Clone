@@ -40,7 +40,7 @@ function Product() {
           >
             Add to card
           </Button>
-          <div className="card toast-demo"></div>
+          
         </Card>
       ))}
     </div>

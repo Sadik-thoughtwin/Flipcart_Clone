@@ -13,7 +13,7 @@ import { useNavigate } from "react-router";
 import "./SellerLogin.css";
 
 export const SellerLogin = () => {
-  const [showMessage, setShowMessage] = useState(false);
+  const [showMessage3, setShowMessage3] = useState(false);
   const [formData, setFormData] = useState({});
   const [getError, setGetError] = useState("");
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ export const SellerLogin = () => {
     },
     onSubmit: (data) => {
       setFormData(data);
-      setShowMessage(true);
+      setShowMessage3(true);
       formik.resetForm();
         dispatch(loginsellerAction(data))
         navigate("/productlist");
@@ -71,7 +71,7 @@ export const SellerLogin = () => {
         label="OK"
         className="p-button-text"
         autoFocus
-        onClick={() => setShowMessage(false)}
+        onClick={() => setShowMessage3(false)}
       />
     </div>
   );
@@ -80,8 +80,8 @@ export const SellerLogin = () => {
     <div className="form-demo">
       <Sellerheader />
       <Dialog
-        visible={showMessage}
-        onHide={() => setShowMessage(false)}
+        visible={showMessage3}
+        onHide={() => setShowMessage3(false)}
         position="top"
         footer={dialogFooter}
         showHeader={false}

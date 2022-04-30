@@ -12,7 +12,7 @@ import "./AdminLogin.css";
 import { AdminLoginAction } from "../../Redux/actions/AdminLoginAction";
 
 export const Admin = () => {
-  const [showMessage, setShowMessage] = useState(false);
+  const [showMessage1, setShowMessage1] = useState(false);
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ export const Admin = () => {
     onSubmit: (formvalues) => {
       setFormData(formvalues);
       formik.resetForm();
-      setShowMessage(true);
+      setShowMessage1(true);
       dispatch(AdminLoginAction(formvalues));
     },
   });
@@ -71,7 +71,7 @@ export const Admin = () => {
         label="OK"
         className="p-button-text"
         autoFocus
-        onClick={() => setShowMessage(false)}
+        onClick={() => setShowMessage1(false)}
       />
     </div>
   );
@@ -80,8 +80,8 @@ export const Admin = () => {
     <div className="form-demo1">
       <AdminHeader />
       <Dialog
-        visible={showMessage}
-        onHide={() => setShowMessage(false)}
+        visible={showMessage1}
+        onHide={() => setShowMessage1(false)}
         position="top"
         footer={dialogFooter}
         showHeader={false}

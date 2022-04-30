@@ -11,15 +11,14 @@ import { useSelector, useDispatch } from "react-redux";
 import WishList from "../Signup/WishList";
 
 import { Link } from "react-router-dom";
-import List from "../Signup/List";
 
 export const Header = () => {
-  const loginModalStatus = useSelector(
-    (state) => state?.userReducer.loginModal
-  );
+  const loginModalStatus = useSelector((state) => state?.userReducer.loginModal);
   const loginDetails = useSelector((state) => state?.loginReducer);
   console.log(">>>>>>>>>>",loginDetails)
   const token = loginDetails?.success?.accToken;
+  const message = loginDetails?.success?.message;
+ 
   const dispatch = useDispatch();
 
   useEffect(() => {
